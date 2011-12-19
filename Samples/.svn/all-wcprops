@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/968/branches/AnimKit/Samples
+END
+glut64.dll
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/920/branches/AnimKit/Samples/glut64.dll
+END
+akDemoBase.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/968/branches/AnimKit/Samples/akDemoBase.h
+END
+akGlutDemo.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/944/branches/AnimKit/Samples/akGlutDemo.h
+END
+glew64.dll
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/920/branches/AnimKit/Samples/glew64.dll
+END
+akEntity.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/968/branches/AnimKit/Samples/akEntity.cpp
+END
+glut32.dll
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/920/branches/AnimKit/Samples/glut32.dll
+END
+akDemoBase.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/968/branches/AnimKit/Samples/akDemoBase.cpp
+END
+akGlutDemo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/968/branches/AnimKit/Samples/akGlutDemo.cpp
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/939/branches/AnimKit/Samples/CMakeLists.txt
+END
+glew32.dll
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/920/branches/AnimKit/Samples/glew32.dll
+END
+akEntity.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/944/branches/AnimKit/Samples/akEntity.h
+END

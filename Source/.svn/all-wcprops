@@ -1,0 +1,257 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/968/branches/AnimKit/Source
+END
+akColor.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/939/branches/AnimKit/Source/akColor.h
+END
+akGeometryDeformer.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/934/branches/AnimKit/Source/akGeometryDeformer.h
+END
+akDualQuat.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/934/branches/AnimKit/Source/akDualQuat.h
+END
+akBufferInfo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/934/branches/AnimKit/Source/akBufferInfo.cpp
+END
+akAnimationClip.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/939/branches/AnimKit/Source/akAnimationClip.cpp
+END
+akSkeleton.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/951/branches/AnimKit/Source/akSkeleton.h
+END
+akAnimationCurve.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/939/branches/AnimKit/Source/akAnimationCurve.h
+END
+akTransitionBlender.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/934/branches/AnimKit/Source/akTransitionBlender.h
+END
+akMorphTarget.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/934/branches/AnimKit/Source/akMorphTarget.cpp
+END
+akCommon.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/939/branches/AnimKit/Source/akCommon.h
+END
+akVertexGroup.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/934/branches/AnimKit/Source/akVertexGroup.h
+END
+akMesh.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/944/branches/AnimKit/Source/akMesh.h
+END
+akAnimationPlayer.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/939/branches/AnimKit/Source/akAnimationPlayer.h
+END
+akPoseBlender.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/951/branches/AnimKit/Source/akPoseBlender.cpp
+END
+akPose.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/934/branches/AnimKit/Source/akPose.cpp
+END
+akAnimationChannel.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/951/branches/AnimKit/Source/akAnimationChannel.cpp
+END
+akAnimationPlayerSet.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/934/branches/AnimKit/Source/akAnimationPlayerSet.cpp
+END
+akMathUtils.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/963/branches/AnimKit/Source/akMathUtils.cpp
+END
+akSkeletonPose.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/951/branches/AnimKit/Source/akSkeletonPose.cpp
+END
+akGeometryDeformer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/951/branches/AnimKit/Source/akGeometryDeformer.cpp
+END
+akDualQuat.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/934/branches/AnimKit/Source/akDualQuat.cpp
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/963/branches/AnimKit/Source/CMakeLists.txt
+END
+btAlignedAllocator.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/934/branches/AnimKit/Source/btAlignedAllocator.h
+END
+akSkeleton.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/950/branches/AnimKit/Source/akSkeleton.cpp
+END
+akAnimationCurve.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/934/branches/AnimKit/Source/akAnimationCurve.cpp
+END
+akTransitionBlender.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/934/branches/AnimKit/Source/akTransitionBlender.cpp
+END
+akVertexGroup.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/934/branches/AnimKit/Source/akVertexGroup.cpp
+END
+akBufferInfo.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/934/branches/AnimKit/Source/akBufferInfo.h
+END
+akMesh.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/950/branches/AnimKit/Source/akMesh.cpp
+END
+akAnimationPlayer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/944/branches/AnimKit/Source/akAnimationPlayer.cpp
+END
+akAnimationClip.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/939/branches/AnimKit/Source/akAnimationClip.h
+END
+akMorphTarget.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/934/branches/AnimKit/Source/akMorphTarget.h
+END
+akPoseBlender.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/934/branches/AnimKit/Source/akPoseBlender.h
+END
+btAlignedObjectArray.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/934/branches/AnimKit/Source/btAlignedObjectArray.h
+END
+akPose.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/934/branches/AnimKit/Source/akPose.h
+END
+akAnimationPlayerSet.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/934/branches/AnimKit/Source/akAnimationPlayerSet.h
+END
+akAnimationChannel.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/939/branches/AnimKit/Source/akAnimationChannel.h
+END
+btAlignedAllocator.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/935/branches/AnimKit/Source/btAlignedAllocator.cpp
+END
+akMathUtils.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/968/branches/AnimKit/Source/akMathUtils.h
+END
+akSkeletonPose.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/934/branches/AnimKit/Source/akSkeletonPose.h
+END
+akEuler.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/934/branches/AnimKit/Source/akEuler.h
+END
+akTransformState.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/951/branches/AnimKit/Source/akTransformState.h
+END

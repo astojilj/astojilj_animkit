@@ -1,0 +1,215 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib
+END
+configure
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/configure
+END
+inffixed.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/inffixed.h
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/Makefile.in
+END
+deflate.c
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/deflate.c
+END
+zutil.c
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/zutil.c
+END
+gzio.c
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/gzio.c
+END
+deflate.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/deflate.h
+END
+crc32.c
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/crc32.c
+END
+zutil.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/zutil.h
+END
+crc32.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/crc32.h
+END
+trees.c
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/trees.c
+END
+algorithm.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/algorithm.txt
+END
+zconf.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/zconf.h
+END
+INDEX
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/INDEX
+END
+minigzip.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/minigzip.c
+END
+trees.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/trees.h
+END
+inffast.c
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/inffast.c
+END
+example.c
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/example.c
+END
+compress.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/compress.c
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/Makefile
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/CMakeLists.txt
+END
+inffast.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/inffast.h
+END
+zlib.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/zlib.h
+END
+ChangeLog
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/ChangeLog
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/README
+END
+inftrees.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/inftrees.c
+END
+zlib.3
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/zlib.3
+END
+inflate.c
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/inflate.c
+END
+uncompr.c
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/uncompr.c
+END
+inftrees.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/inftrees.h
+END
+FAQ
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/FAQ
+END
+inflate.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/inflate.h
+END
+zconf.in.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/zconf.in.h
+END
+adler32.c
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/adler32.c
+END
+infback.c
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/infback.c
+END

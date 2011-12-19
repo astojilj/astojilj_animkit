@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/FileTools/File
+END
+fbtScanner.l
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/File/fbtScanner.l
+END
+fbtStreams.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/File/fbtStreams.h
+END
+fbtTypes.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/File/fbtTypes.cpp
+END
+fbtFile.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/File/fbtFile.h
+END
+fbtPlatformHeaders.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/File/fbtPlatformHeaders.h
+END
+fbtBuilder.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/File/fbtBuilder.cpp
+END
+fbtTypes.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/File/fbtTypes.h
+END
+fbtTables.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/File/fbtTables.cpp
+END
+fbtConfig.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/File/fbtConfig.h
+END
+fbtBuilder.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/File/fbtBuilder.h
+END
+fbtStreams.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/File/fbtStreams.cpp
+END
+fbtTables.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/File/fbtTables.h
+END
+fbtFile.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/File/fbtFile.cpp
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/939/branches/AnimKit/Dependencies/FileTools/File/CMakeLists.txt
+END

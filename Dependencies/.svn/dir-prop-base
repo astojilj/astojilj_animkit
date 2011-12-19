@@ -1,0 +1,6 @@
+K 13
+svn:externals
+V 65
+vectormath http://bullet.googlecode.com/svn/trunk/src/vectormath
+
+END

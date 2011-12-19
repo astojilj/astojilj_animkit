@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/942/branches/AnimKit/Dependencies/FileTools/FileFormats/Blend
+END
+fbtBlend.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/FileFormats/Blend/fbtBlend.cpp
+END
+Blender.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/942/branches/AnimKit/Dependencies/FileTools/FileFormats/Blend/Blender.h
+END
+fbtBlend.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/FileFormats/Blend/fbtBlend.h
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/FileFormats/Blend/CMakeLists.txt
+END
