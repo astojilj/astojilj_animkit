@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=AnimKit Demo
+Exec=/usr/bin/animkitdemo
+Icon=/usr/share/animkitdemo/icon.png

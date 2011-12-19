@@ -32,6 +32,7 @@
 #include <Windows.h>
 #endif
 
+#ifndef OPENGL_ES_2_0
 #if defined(__APPLE__)
 #include <GL/glew.h>
 #include <GLUT/glut.h>
@@ -41,7 +42,18 @@
 #include <GL/glut.h>
 #include <GL/gl.h>
 #endif
+#else
 
+    #ifdef QT_BUILD
+        #include <GLES2/gl2.h>
+    #else
+        #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 30000
+            #define BUILD_OPENGLES_2_0
+            #include <OpenGLES/ES2/gl.h>
+            #include <OpenGLES/ES2/glext.h>
+        #endif
+    #endif
+#endif
 
 class akDemoBase;
 

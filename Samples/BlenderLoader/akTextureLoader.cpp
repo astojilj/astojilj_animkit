@@ -37,6 +37,13 @@
 
 #include "../akDemoBase.h"
 
+#ifdef OPENGL_ES_2_0
+#include "stdlib.h"
+// for this example, ok to switch colors
+#define GL_BGRA GL_RGBA
+#define GL_BGR GL_RGB
+#endif
+
 //Header containing information on the image data and palette
 //Optional image identification field
 //Optional color map
@@ -75,8 +82,8 @@ bool checkHeader(TgaHeader& head)
 
 GLuint LoadRawTargaTexture(utStream& stream)
 {
-	GLuint texture;
-	TgaHeader header;
+    GLuint texture;
+    TgaHeader header;
 	UTuint32 size;
 	void* data;
 
@@ -100,19 +107,48 @@ GLuint LoadRawTargaTexture(utStream& stream)
 	if(header.PixelDepth == 24)
 	{
 		intform = 3;
-		form = GL_BGR;
-	}
-	
+        form = GL_BGR;
+    }
+#ifdef OPENGL_ES_2_0
+        intform = form;
+#endif
+
+
 	glGenTextures( 1, &texture );
 	glBindTexture( GL_TEXTURE_2D, texture );
 	
-	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexImage2D(GL_TEXTURE_2D, 0, intform, header.Width, header.Height, 0, form, GL_UNSIGNED_BYTE, data);
+
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	
-	glTexImage2D(GL_TEXTURE_2D, 0, intform, header.Width, header.Height, 0, form, GL_UNSIGNED_BYTE, data);
 //	gluBuild2DMipmaps( GL_TEXTURE_2D, textype, header.Width, header.Height, textype, GL_UNSIGNED_BYTE, data );
 	
-	free(data);
+    //free(data);
+    ///some testing to create textures programmatically/from memory buffer
+/*    GLubyte*	image=(GLubyte*)malloc(256*256*4*sizeof(int));
+    for(int y=0;y<256;++y)
+    {
+        const int	t=y>>4;
+        GLubyte*	pi=image+y*256*3;
+        for(int x=0;x<256;++x)
+        {
+            const int		s=x>>4;
+            const GLubyte	b=180;
+            GLubyte			c=b+((s+t&1)&1)*(255-b);
+            pi[0]=pi[1]=pi[2]=c;pi+=3;
+        }
+    }
+
+    texture = -1;
+    glGenTextures(1,(GLuint*)&texture);
+    glBindTexture(GL_TEXTURE_2D,texture);
+
+    glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,GL_RGB,GL_UNSIGNED_BYTE,image);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    free(image);*/
 	return texture;
 }
 

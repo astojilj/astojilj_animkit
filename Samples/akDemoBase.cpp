@@ -35,13 +35,19 @@
 #include "akAnimationClip.h"
 
 #include "btAlignedAllocator.h"
-
+#ifdef OPENGL_ES_2_0
+#include "Timer.h"
+#include "stdio.h"
+#include "piper.h"
+extern float WindowHeight;
+extern float WindowWidth;
+#endif
 #include <sstream>
 
 akDemoBase::akDemoBase() : m_frame(0), m_time(0), m_fpsLastTime(0), m_stepLastTime(0),
 	m_lastfps(0), m_canUseVbo(false), m_drawNormals(false), m_wireframe(false), m_textured(true),
-	m_shaded(true), m_drawColor(true), m_useVbo(true), m_dualQuatUse(0), m_normalMethod(2),
-	m_drawSkeleton(true), m_windowx(800), m_windowy(800)
+    m_shaded(true), m_drawColor(false), m_useVbo(true), m_dualQuatUse(0), m_normalMethod(1),
+    m_drawSkeleton(false), m_windowx(800), m_windowy(800)
 {
 	m_camera = (akCamera*) btAlignedAlloc(sizeof(akCamera), 16);
 }
@@ -88,7 +94,9 @@ void akDemoBase::start(void)
 {
 	init();
 	
-	if (GLEW_ARB_vertex_buffer_object)
+#ifndef OPENGL_ES_2_0
+    if (GLEW_ARB_vertex_buffer_object)
+#endif
 		m_canUseVbo = true;
 	
 	m_meshCount = m_objects.size();
@@ -104,12 +112,13 @@ void akDemoBase::start(void)
 		m_vertexCount += object->getMesh()->getVertexCount();
 		m_triCount  += object->getMesh()->getTriangleCount();
 	}
-	
-	glClearColor(0.7f, 0.7f, 0.7f, 1.0f);
+    glEnable(GL_CULL_FACE);
+    glEnable(GL_TEXTURE_2D);
+
+#ifndef OPENGL_ES_2_0
+    glClearColor(0.7f, 0.7f, 0.7f, 1.0f);
 	glShadeModel(GL_SMOOTH);
-	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_TEXTURE_2D);
 	
 	GLfloat LightAmbient[]= { 1.0f, 1.0f, 01.0f, 1.0f };
 	GLfloat LightDiffuse[]= { 1.0f, 1.0f, 01.0f, 1.0f };
@@ -118,6 +127,7 @@ void akDemoBase::start(void)
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse);
 	glLightfv(GL_LIGHT1, GL_POSITION, LightPosition);
 	glEnable(GL_LIGHT1);
+#endif
 }
 
 void akDemoBase::step(akScalar time)
@@ -132,7 +142,8 @@ void akDemoBase::step(akScalar time)
 
 void akDemoBase::drawString(float x, float y, const char *s)
 {
-	const char *c;
+#ifndef OPENGL_ES_2_0
+    const char *c;
 	
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
@@ -167,6 +178,23 @@ void akDemoBase::drawString(float x, float y, const char *s)
 	glPopMatrix();
 	
 	glMatrixMode(GL_MODELVIEW);
+#else
+    if (y == 15) {
+        // lower string, only once
+        static bool print(true);
+        if (print) {
+            print = false;
+            printf("%s", s);
+        }
+    } else {
+        // upper one
+        static char lastValueOfS[512];
+        if (strcmp(s, lastValueOfS)) {
+            strcpy(lastValueOfS, s);
+            printf("%s", s);
+        }
+    }
+#endif
 }
 
 void akDemoBase::reshapeCallback(int w, int h)
@@ -174,6 +202,24 @@ void akDemoBase::reshapeCallback(int w, int h)
 	m_windowx = w;
 	m_windowy = h ? h : 1;
 }
+
+#ifdef OPENGL_ES_2_0
+
+#define GLUT_ELAPSED_TIME 1
+static unsigned int glutGet(unsigned int i)
+{
+    assert(i == GLUT_ELAPSED_TIME);
+    // elapsed time since last simulation step. used when calling physics.stepSimulation
+    static structTimer elapsedTimer;
+    static bool init = false;
+    if (!init) {
+        ResetTimer(&elapsedTimer);
+        init = true;
+    }
+    return 1000 * elapsedTimeInS(&elapsedTimer);
+}
+
+#endif
 
 void akDemoBase::idleCallback(void)
 {
@@ -203,7 +249,7 @@ void akDemoBase::idleCallback(void)
 	if(dt >= 0.2)
 		dt = 0.016666;
 	
-	step(dt);
+    step(dt);
 	render();
 }
 
@@ -232,7 +278,7 @@ void akDemoBase::keyboardCallback(unsigned char key,int x, int y)
 		case 'd':
 		case 'D':
 			m_dualQuatUse +=1;
-			if(m_dualQuatUse>3) m_dualQuatUse = 0;
+            if(m_dualQuatUse>3) m_dualQuatUse = 0;
 			break;
 		case 'w':
 		case 'W':
@@ -328,17 +374,30 @@ int akDemoBase::getFps(void)
 	return m_lastfps;
 }
 
+#ifdef OPENGL_ES_2_0
+static void MatrixConvert(const akMatrix4 &m, MATRIX &out)
+{
+    void *p = &(out.f);
+    for (int i = 0; i < 4; i++) {
+        akVector4 row = m.getCol(i);
+        memcpy(p, &row, 4 * sizeof(float));
+        p += 4*sizeof(float);
+    }
+}
+#endif
+
 void akDemoBase::render()
 {
-	glViewport(0, 0, m_windowx, m_windowy);
+#ifndef OPENGL_ES_2_0
+    glViewport(0, 0, m_windowx, m_windowy);
 	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
 	
-	if( m_wireframe )
+    if( m_wireframe )
 		glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
 	else
 		glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
-		
+
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(m_camera->m_fov, (float)m_windowx/m_windowy, m_camera->m_clipStart, m_camera->m_clipEnd);
@@ -346,7 +405,22 @@ void akDemoBase::render()
 	glMatrixMode(GL_MODELVIEW);
 	akMatrix4 cam_inv_m = inverse(m_camera->m_transform.toMatrix());
 	glLoadMatrixf((GLfloat*)&cam_inv_m);
-	
+#else
+    Piper::instance()->initFrame();
+    glClearColor(0.3f, 0.3f, 0.4f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    // Set the OpenGL projection matrix
+    MATRIX	MyPerspMatrix;
+    MatrixPerspectiveFovRH(MyPerspMatrix, m_camera->m_fov, f2vt((WindowWidth / WindowHeight)), m_camera->m_clipStart, m_camera->m_clipEnd, 0);
+    Piper::instance()->setMatrix(MyPerspMatrix, Piper::PROJECTION);
+
+    MATRIX model1;
+    akMatrix4 cam_m = m_camera->m_transform.toMatrix();
+    MATRIX camM((GLfloat*)&cam_m);
+    MatrixConvert(cam_m, camM);
+    MatrixInverse(model1, camM);
+    Piper::instance()->setMatrix(model1, Piper::MODEL);
+#endif
 	// world origin axes
 //	glBegin(GL_LINES);
 //		glColor3f(1,0,0);
@@ -378,7 +452,9 @@ void akDemoBase::render()
 	UIString << "Triangles: " << m_triCount <<"\n";
 	UIString << "Vertices: " << m_vertexCount <<"\n";
 	utString str = UIString.str();
-	glColor3f(0.2f, 0.2f, 0.2f);
+#ifndef OPENGL_ES_2_0
+    glColor3f(0.2f, 0.2f, 0.2f);
+#endif
 	drawString(10, 15, str.c_str());
 	
 	// Info text
@@ -451,7 +527,8 @@ void akDemoBase::render()
 		str += ")\n";
 	}
 	drawString(10, m_windowy-100, str.c_str());
-	
+#ifndef OPENGL_ES_2_0
 	glFlush();
 	glutSwapBuffers();
+#endif
 }

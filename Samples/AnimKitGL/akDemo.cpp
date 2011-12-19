@@ -49,15 +49,19 @@ akDemo::~akDemo()
 void akDemo::init(void)
 {
 	akBLoader loader(this);
-	loader.loadFile("Blu.blend", false, true);
-	//loader.loadFile("Sintel.blend", false, true);
+#ifdef QT_BUILD
+    loader.loadFile("/usr/share/animkitdemo/Blu.blend", false, true);
+#else
+    loader.loadFile("Blu.blend", false, true);
+#endif
+    //loader.loadFile("Sintel.blend", false, true);
 	
 	// Set some animation data the loader cannot detect
 	akEntity* square = getEntity("Plane");
 	if(square)
 		square->setPositionAnimated(true);
 	
-	// Join the morph action and the rest action together.
+    // Join the morph action and the rest action together.
 	akAnimationClip* bluc = getAnimation("Rest");
 	akAnimationClip* morphc = getAnimation("KeyAction");
 	if(bluc && morphc)
@@ -65,12 +69,12 @@ void akDemo::init(void)
 		akAnimationChannel* chan = morphc->getChannel("Key 1");
 		if(chan)
 		{
-			morphc->removeChannel(chan);
-			bluc->addChannel(chan);
+            morphc->removeChannel(chan);
+            bluc->addChannel(chan);
 		}
 	}
-	
-	// Joint mask test
+/*
+    // Joint mask test
 	akEntity* blu = getEntity("Blu");
 	if(blu)
 	{
@@ -86,9 +90,10 @@ void akDemo::init(void)
 			}
 		}
 	}
-	
+*/
 }
 
+#ifndef OPENGL_ES_2_0
 
 int main(int argc, char** argv)
 {
@@ -100,3 +105,4 @@ int main(int argc, char** argv)
 	return 0;
 }
 
+#endif
