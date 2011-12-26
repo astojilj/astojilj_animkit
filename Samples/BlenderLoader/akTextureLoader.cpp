@@ -40,7 +40,16 @@
 #ifdef OPENGL_ES_2_0
 #include "stdlib.h"
 // for this example, ok to switch colors
+#endif
+
+#ifdef OPENGL_ES_2_0
+#ifdef GL_BGRA
+#undef GL_BGRA
 #define GL_BGRA GL_RGBA
+#endif
+#endif
+
+#ifndef GL_BGR
 #define GL_BGR GL_RGB
 #endif
 
@@ -121,6 +130,8 @@ GLuint LoadRawTargaTexture(utStream& stream)
 
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	free(data);
 	
 //	gluBuild2DMipmaps( GL_TEXTURE_2D, textype, header.Width, header.Height, textype, GL_UNSIGNED_BYTE, data );
 	
@@ -148,7 +159,8 @@ GLuint LoadRawTargaTexture(utStream& stream)
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    free(image);*/
+    free(image);
+*/
 	return texture;
 }
 

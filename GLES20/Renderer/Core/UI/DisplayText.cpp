@@ -34,7 +34,7 @@ subject to the following restrictions:
 #include "DeviceType.h"
 #include "Mathematics.h"
 #ifndef QT_BUILD
-#include "Geometry.h"
+//#include "Geometry.h"
 #endif
 #include "Macros.h"
 #include "MemoryManager.h"

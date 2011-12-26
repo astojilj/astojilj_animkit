@@ -13,7 +13,7 @@
  3. This notice may not be removed or altered from any source distribution.
 */
 #include "Types.h"
-#include <Mathematics.h>
+#include "Mathematics.h"
 
 #include <sys/time.h>
 
@@ -24,7 +24,7 @@
 #include <mach/mach.h>
 #include <mach/mach_time.h>
 
-int GetFps(int frame, CFTimeInterval &TimeInterval, CFTimeInterval *frameTime=NULL);
+//int GetFps(int frame, CFTimeInterval &TimeInterval, CFTimeInterval *frameTime=NULL);
 #endif
 
 typedef struct
@@ -39,10 +39,37 @@ typedef struct
 
 
 #ifdef __APPLE__
-void StartTimer(structTimer* timer);
-void ResetTimer(structTimer* timer);
-// get elapsed time, since last start or reset, in ms
-float GetAverageTimeValueInMS(structTimer* timer);
+void StartTimer(structTimer* timer)
+{
+	/* Get the timebase info */
+	mach_timebase_info(&timer->info);
+}
+
+void ResetTimer(structTimer* timer)
+{
+	// calculate our local time
+	timer->startTime = mach_absolute_time();
+}
+
+float GetAverageTimeValueInMS(structTimer* timer)
+{
+	uint64_t TimeInterval;
+	
+	// calculate our local time
+	TimeInterval = mach_absolute_time();
+	
+	uint64_t duration = TimeInterval - timer->startTime;
+	/* Return in miliseconds */
+	duration = (float)(duration * timer->info.numer)/(float)(timer->info.denom*1000000.f);
+	return duration;
+}
+
+float elapsedTimeInS(structTimer* timer)
+{
+	return GetAverageTimeValueInMS(timer) / 1000.0f;
+}
+
+
 #else
 float elapsedTimeInS(structTimer* timer)
 {

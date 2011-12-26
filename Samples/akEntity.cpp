@@ -75,6 +75,17 @@ void akEntity::setSkeleton(akSkeleton *skel)
 	m_skeleton = skel;
 }
 
+// FIXME
+// in iOS 4.1 simulator, glDrawElements(GL_TRIANGLES, cnt, GL_UNSIGNED_INT did not work - did not show anything on screen
+// while GL_UNSIGNED_SHORT works. Using this as temporary workaround until trying with new sdk or anyway, change types
+// in animkit code (no reason to use unsigned int anyway).
+static void convertUint2Ushort(unsigned int *source, unsigned short *target, unsigned int count)
+{
+    for (int i = 0; i < count; i++) {
+        target[i] = (unsigned short) source[i];
+    }
+}
+
 void akEntity::init(bool useVbo, akDemoBase* demo)
 {
 	m_useVbo = useVbo;
@@ -122,8 +133,10 @@ void akEntity::init(bool useVbo, akDemoBase* demo)
 			glBindBuffer(GL_ARRAY_BUFFER_ARB, m_staticVertexVboIds[i]);
 			glBufferData(GL_ARRAY_BUFFER_ARB, nv*staticdatas, staticdata, GL_STATIC_DRAW);
 			
+            unsigned short indexData2UShort[ni];
+            convertUint2Ushort((unsigned int*) idata, indexData2UShort, ni);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER_ARB, m_staticIndexVboIds[i]);
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER_ARB, ni*idatas, idata, GL_STATIC_DRAW);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER_ARB, ni*(idatas/2), indexData2UShort, GL_STATIC_DRAW);
 		}
 	}
 	
@@ -291,7 +304,8 @@ void akEntity::draw(bool drawNormal, bool drawColor, bool textured, bool useVbo,
 #ifndef OPENGL_ES_2_0
                 glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 #else
-                Piper::instance()->glColor4f(0.f, 0.f, 0.f, 1.f);
+				// internal tricks - alpha == 0.99 means no outline
+                Piper::instance()->glColor4f(1.f, 0.f, 0.f, m_skeleton ? 1.0f : 0.99f);
 #endif
 			}
 			
@@ -328,7 +342,7 @@ void akEntity::draw(bool drawNormal, bool drawColor, bool textured, bool useVbo,
 				glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, m_staticIndexVboIds[j]);
 
 #ifdef OPENGL_ES_2_0
-                Piper::instance()->glDrawElements(GL_TRIANGLES, tot, GL_UNSIGNED_INT, (GLvoid*)idxbuf->getOffset());
+                Piper::instance()->glDrawElements(GL_TRIANGLES, tot, GL_UNSIGNED_SHORT, (GLvoid*)idxbuf->getOffset());
 #else
                 glDrawElements(GL_TRIANGLES, tot, GL_UNSIGNED_INT, (GLvoid*)idxbuf->getOffset());
 #endif
@@ -452,7 +466,7 @@ void akEntity::draw(bool drawNormal, bool drawColor, bool textured, bool useVbo,
 			glVertex3f(0,0,0);
 			glEnd();
 #else
-            Piper::instance()->glColor4f(1.0f, 0.0f, 0.0f, 0.0f);
+/*            Piper::instance()->glColor4f(1.0f, 0.0f, 0.0f, 0.0f);
             GLfloat indices[] = {
                 0.05,0,0,
                 0,0,0,
@@ -464,6 +478,7 @@ void akEntity::draw(bool drawNormal, bool drawColor, bool textured, bool useVbo,
 
             Piper::instance()->glDrawElements(GL_LINES,3, GL_FLOAT, indices);
             Piper::instance()->glColor4f(0.f, 0.f, 0.f, 1.0f);
+*/ 
 #endif
             glPopMatrix();
 		}

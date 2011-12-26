@@ -34,6 +34,7 @@
 #include "akSkeletonPose.h"
 #include "akGeometryDeformer.h"
 #include "akAnimationPlayerSet.h"
+#include "Pathes.h"
 
 akDemo::akDemo() : akDemoBase()
 {
@@ -45,14 +46,20 @@ akDemo::~akDemo()
 	
 }
 
-
 void akDemo::init(void)
 {
 	akBLoader loader(this);
 #ifdef QT_BUILD
     loader.loadFile("/usr/share/animkitdemo/Blu.blend", false, true);
 #else
-    loader.loadFile("Blu.blend", false, true);
+    #if defined __APPLE__ && defined OPENGL_ES_2_0
+		char absolutePath[512], bundleDir[512];
+		GetResourcePathASCII(bundleDir,512);
+		sprintf(absolutePath,"%s/%s",bundleDir,"Blu.blend");
+		loader.loadFile(absolutePath, false, true);	
+    #else
+		loader.loadFile("Blu.blend", false, true);
+    #endif
 #endif
     //loader.loadFile("Sintel.blend", false, true);
 	

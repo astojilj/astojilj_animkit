@@ -39,8 +39,8 @@
 #include "Timer.h"
 #include "stdio.h"
 #include "piper.h"
-extern float WindowHeight;
-extern float WindowWidth;
+float WindowHeight = 640;
+float WindowWidth = 480;
 #endif
 #include <sstream>
 
@@ -114,6 +114,7 @@ void akDemoBase::start(void)
 	}
     glEnable(GL_CULL_FACE);
     glEnable(GL_TEXTURE_2D);
+    glEnable(GL_DEPTH_TEST);
 
 #ifndef OPENGL_ES_2_0
     glClearColor(0.7f, 0.7f, 0.7f, 1.0f);
@@ -213,6 +214,7 @@ static unsigned int glutGet(unsigned int i)
     static structTimer elapsedTimer;
     static bool init = false;
     if (!init) {
+        StartTimer(&elapsedTimer);
         ResetTimer(&elapsedTimer);
         init = true;
     }
@@ -231,7 +233,6 @@ void akDemoBase::idleCallback(void)
 	}
 	
 	m_time = glutGet(GLUT_ELAPSED_TIME);
-	
 	// fps
 	m_frame++;
 	if (m_time - m_fpsLastTime > 1000) {
@@ -375,7 +376,7 @@ int akDemoBase::getFps(void)
 }
 
 #ifdef OPENGL_ES_2_0
-static void MatrixConvert(const akMatrix4 &m, MATRIX &out)
+/*static void MatrixConvert(const akMatrix4 &m, MATRIX &out)
 {
     void *p = &(out.f);
     for (int i = 0; i < 4; i++) {
@@ -383,7 +384,7 @@ static void MatrixConvert(const akMatrix4 &m, MATRIX &out)
         memcpy(p, &row, 4 * sizeof(float));
         p += 4*sizeof(float);
     }
-}
+}*/
 #endif
 
 void akDemoBase::render()
@@ -411,13 +412,14 @@ void akDemoBase::render()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // Set the OpenGL projection matrix
     MATRIX	MyPerspMatrix;
-    MatrixPerspectiveFovRH(MyPerspMatrix, m_camera->m_fov, f2vt((WindowWidth / WindowHeight)), m_camera->m_clipStart, m_camera->m_clipEnd, 0);
+	
+    MatrixPerspectiveFovRH(MyPerspMatrix, m_camera->m_fov, f2vt((WindowWidth / WindowHeight)), m_camera->m_clipStart, m_camera->m_clipEnd, (WindowHeight > WindowWidth));
     Piper::instance()->setMatrix(MyPerspMatrix, Piper::PROJECTION);
 
     MATRIX model1;
     akMatrix4 cam_m = m_camera->m_transform.toMatrix();
     MATRIX camM((GLfloat*)&cam_m);
-    MatrixConvert(cam_m, camM);
+
     MatrixInverse(model1, camM);
     Piper::instance()->setMatrix(model1, Piper::MODEL);
 #endif
@@ -436,6 +438,7 @@ void akDemoBase::render()
 //		glVertex3f(0,0,0);
 //	glEnd();
 	
+			
 	// objects
 	bool shaded = m_shaded && !m_wireframe;
 	unsigned int i;
@@ -443,7 +446,7 @@ void akDemoBase::render()
 	{
 		m_objects.at(i)->draw(m_drawNormals, m_drawColor, m_textured, m_useVbo, shaded, m_drawSkeleton);
 	}
-	
+		
 	// Stats
 	std::stringstream UIString;
 	UIString << "FPS: " << getFps() << "\n\n";
@@ -452,6 +455,11 @@ void akDemoBase::render()
 	UIString << "Triangles: " << m_triCount <<"\n";
 	UIString << "Vertices: " << m_vertexCount <<"\n";
 	utString str = UIString.str();
+    static int lastfps = getFps();
+    if (getFps() != lastfps) {
+        lastfps = getFps();
+        printf("fps = %d", lastfps);
+    }
 #ifndef OPENGL_ES_2_0
     glColor3f(0.2f, 0.2f, 0.2f);
 #endif

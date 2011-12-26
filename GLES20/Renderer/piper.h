@@ -10,13 +10,13 @@
 #ifndef PIPER_PIPER_H
 #define PIPER_PIPER_H
 
-#include <Mathematics.h>
-#include "../../Math/Matrix.h"
+#include "Mathematics.h"
+#include "../Math/Matrix.h"
 
 #ifdef QT_BUILD // first version for Qt only Opengl ES 2.0
 #include <GLES2/gl2.h>
 #else
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 30000
+#if OPENGL_ES_2_0
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
 extern int __OPENGLES_VERSION;
@@ -26,7 +26,14 @@ extern int __OPENGLES_VERSION;
 #endif
 #endif
 
-#ifndef GL_VERTEX_ARRAY
+
+#ifdef OPENGL_ES_2_0
+#ifdef GL_VERTEX_ARRAY
+#undef GL_VERTEX_ARRAY
+#undef GL_TEXTURE_COORD_ARRAY
+#undef GL_NORMAL_ARRAY
+#undef GL_COLOR_ARRAY
+#endif
 #define GL_VERTEX_ARRAY 0
 #define GL_TEXTURE_COORD_ARRAY	1
 #define GL_NORMAL_ARRAY	2
