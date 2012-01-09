@@ -141,16 +141,17 @@ void akEntity::init(bool useVbo, akDemoBase* demo)
 	}
 	
 	m_textures.resize(nsub);
-	for(int i=0; i<nsub; i++)
+    for(int i=0; i<nsub; i++)
 	{
 		akSubMesh* sub = m_mesh->getSubMesh(i);
-		
+        // astojilj - need to set 0 too
+        m_textures[i] = 0;
+
 		if(sub->getMaterial().m_mode & akMaterial::MA_HASFACETEX)
 		{
 			const utString& texname = sub->getMaterial().m_textures.at(0).m_image;
 			GLuint tex = demo->getTexture(texname);
-			if(tex)
-				m_textures[i] = tex;
+			m_textures[i] = tex;
 		}
 	}
 	
@@ -244,7 +245,7 @@ void akEntity::step(akScalar dt, int dualQuat, int normalsMethod)
 		m_mesh->deform((akGeometryDeformer::SkinningOption)dq, (akGeometryDeformer::NormalsOption)nm,
 					   m_pose, &m_matrixPalette, &m_dualquatPalette);
 		
-		updateVBO();
+        updateVBO();
 	}
 }
 
@@ -324,8 +325,13 @@ void akEntity::draw(bool drawNormal, bool drawColor, bool textured, bool useVbo,
 				
                 if(color)
 				{
-					glColorPointer(4, GL_UNSIGNED_BYTE, colorbuf->stride, (GLvoid*)colorbuf->getOffset());
 					glEnableClientState(GL_COLOR_ARRAY);
+					glColorPointer(4, GL_UNSIGNED_BYTE, colorbuf->stride, (GLvoid*)colorbuf->getOffset());
+#ifdef OPENGL_ES_2_0
+                    if (!texture)
+                        // using alpha to instruct shader what to use, among other things
+                        Piper::instance()->glColor4f(1.f, 0.f, 0.f, 0.15f);
+#endif                    
 				}
 				else
 				{

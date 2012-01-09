@@ -43,7 +43,7 @@ extern int __OPENGLES_VERSION;
 #define glVertexPointer(size,type,stride,pointer) glVertexAttribPointer(GL_VERTEX_ARRAY,size,type,GL_FALSE,stride,pointer)
 #define glNormalPointer(type,stride,pointer) glVertexAttribPointer(GL_NORMAL_ARRAY,3,type,GL_FALSE,stride,pointer)
 #define glTexCoordPointer(size,type,stride,pointer) glVertexAttribPointer(GL_TEXTURE_COORD_ARRAY,size,type,GL_FALSE,stride,pointer)
-#define glColorPointer(size,type,stride,pointer) glVertexAttribPointer(GL_COLOR_ARRAY,size,type,GL_FALSE,stride,pointer)
+#define glColorPointer(size,type,stride,pointer) glVertexAttribPointer(GL_COLOR_ARRAY,size,type,GL_TRUE,stride,pointer)
 #endif
 
 /* Collecting and constructing input for graphics pipeline */

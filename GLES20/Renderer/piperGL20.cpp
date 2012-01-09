@@ -42,8 +42,8 @@ char *shaders_name[] = {
 int total_shaders = sizeof(shaders_name) / sizeof(shaders_name[0]);
 int active_shader;
 
-GLfloat color[] = {0.f, 0.f, 0.f, 1.f};
-GLfloat previousSetColor[] = {0.f, 0.f, 0.f, 1.f};
+static GLfloat color[] = {0.f, 0.f, 0.f, 1.f};
+static GLfloat previousSetColor[] = {0.f, 0.f, 0.f, 1.f};
 
 // ^^ end of block copied from Oolong Engine2/Examples/Renderer/Tutorials/08 Shaders Demo (3DShaders.com)/Classes/Application.mm
 

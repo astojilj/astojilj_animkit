@@ -46,7 +46,7 @@ float WindowWidth = 480;
 
 akDemoBase::akDemoBase() : m_frame(0), m_time(0), m_fpsLastTime(0), m_stepLastTime(0),
 	m_lastfps(0), m_canUseVbo(false), m_drawNormals(false), m_wireframe(false), m_textured(true),
-    m_shaded(true), m_drawColor(false), m_useVbo(true), m_dualQuatUse(0), m_normalMethod(1),
+    m_shaded(true), m_drawColor(true), m_useVbo(true), m_dualQuatUse(0), m_normalMethod(1),
     m_drawSkeleton(false), m_windowx(800), m_windowy(800)
 {
 	m_camera = (akCamera*) btAlignedAlloc(sizeof(akCamera), 16);
@@ -415,13 +415,15 @@ void akDemoBase::render()
 	
     MatrixPerspectiveFovRH(MyPerspMatrix, m_camera->m_fov, f2vt((WindowWidth / WindowHeight)), m_camera->m_clipStart, m_camera->m_clipEnd, (WindowHeight > WindowWidth));
     Piper::instance()->setMatrix(MyPerspMatrix, Piper::PROJECTION);
+    
 
     MATRIX model1;
     akMatrix4 cam_m = m_camera->m_transform.toMatrix();
     MATRIX camM((GLfloat*)&cam_m);
-
+    
     MatrixInverse(model1, camM);
     Piper::instance()->setMatrix(model1, Piper::MODEL);
+    
 #endif
 	// world origin axes
 //	glBegin(GL_LINES);

@@ -887,9 +887,11 @@ void akMeshLoader::convert(bool sortByMat, bool openglVertexColor)
 		}
 		else
 		{
-			for (int i = 0; i < totlayer; i++)
-			{
-				if (mtface[i] != 0)
+            for (int i = 0; i < totlayer; i++)
+            {
+                // astojilj - optimization: if using vertex colors there is still empty mtface
+                // avoid this copy
+				if (mtface[i] != 0 && mtface[i]->tpage)
 				{
 					VEC2CPY(f.uvLayers[i][0], mtface[i][fi].uv[0]);
 					VEC2CPY(f.uvLayers[i][1], mtface[i][fi].uv[1]);
@@ -959,7 +961,8 @@ void akMeshLoader::convert(bool sortByMat, bool openglVertexColor)
 		}
 		if (arpos >= meshtable.size())
 		{
-			curSubMesh = new akSubMesh(akSubMesh::ME_TRIANGLES, true, true, totlayer);
+            // astojilj change: vertex colors true->mcol 
+			curSubMesh = new akSubMesh(akSubMesh::ME_TRIANGLES, true, mcol, totlayer);
 			m_gmesh->addSubMesh(curSubMesh);
 			
 			curSubMeshPair = new akSubMeshPair(curSubMesh, m_bmesh, &smoothfacesarray, &shapekeysnormals);

@@ -34,7 +34,10 @@
 #include "akSkeletonPose.h"
 #include "akGeometryDeformer.h"
 #include "akAnimationPlayerSet.h"
+
+#if defined __APPLE__ && defined OPENGL_ES_2_0
 #include "Pathes.h"
+#endif
 
 akDemo::akDemo() : akDemoBase()
 {
