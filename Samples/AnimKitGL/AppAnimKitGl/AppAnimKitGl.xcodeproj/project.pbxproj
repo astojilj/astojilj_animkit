@@ -19,6 +19,8 @@
 		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
+		A1BAE22314B516D500BDEF0C /* Turtle.blend in Resources */ = {isa = PBXBuildFile; fileRef = A1BAE22214B516D500BDEF0C /* Turtle.blend */; };
+		A1BAE27214B64E6F00BDEF0C /* krava.blend in Resources */ = {isa = PBXBuildFile; fileRef = A1BAE27114B64E6F00BDEF0C /* krava.blend */; };
 		A1BD7BC914A3E647002F2D43 /* akDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7BC514A3E647002F2D43 /* akDemo.cpp */; };
 		A1BD7BD114A3E6A4002F2D43 /* Toon.frag in Resources */ = {isa = PBXBuildFile; fileRef = A1BD7BCF14A3E694002F2D43 /* Toon.frag */; };
 		A1BD7BDE14A3E6F6002F2D43 /* Toon.vert in Resources */ = {isa = PBXBuildFile; fileRef = A1BD7BDC14A3E6EF002F2D43 /* Toon.vert */; };
@@ -109,6 +111,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* AppAnimKitGl_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppAnimKitGl_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* AppAnimKitGl-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AppAnimKitGl-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A1BAE22214B516D500BDEF0C /* Turtle.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = Turtle.blend; path = ../Turtle.blend; sourceTree = SOURCE_ROOT; };
+		A1BAE27114B64E6F00BDEF0C /* krava.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = krava.blend; path = ../krava.blend; sourceTree = SOURCE_ROOT; };
 		A1BD7BC514A3E647002F2D43 /* akDemo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = akDemo.cpp; path = ../akDemo.cpp; sourceTree = SOURCE_ROOT; };
 		A1BD7BC614A3E647002F2D43 /* akDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = akDemo.h; path = ../akDemo.h; sourceTree = SOURCE_ROOT; };
 		A1BD7BCF14A3E694002F2D43 /* Toon.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Toon.frag; path = ../Toon.frag; sourceTree = SOURCE_ROOT; };
@@ -333,6 +337,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A1BAE27114B64E6F00BDEF0C /* krava.blend */,
+				A1BAE22214B516D500BDEF0C /* Turtle.blend */,
 				A1BD7E9014A5400F002F2D43 /* Blu.blend */,
 				A1BD7C9014A3E7F6002F2D43 /* FileTools */,
 				A1BD7CC214A3E7F6002F2D43 /* Utils */,
@@ -835,6 +841,8 @@
 				28EC4C5A11D54ECE0027AA9F /* AppAnimKitGlViewController.xib in Resources */,
 				A1BD7C4F14A3E7A5002F2D43 /* readme.txt in Resources */,
 				A1BD7E9114A5400F002F2D43 /* Blu.blend in Resources */,
+				A1BAE22314B516D500BDEF0C /* Turtle.blend in Resources */,
+				A1BAE27214B64E6F00BDEF0C /* krava.blend in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
