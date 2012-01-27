@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 41
-/svn/!svn/ver/968/branches/AnimKit/Source
+V 42
+/svn/!svn/ver/1020/branches/AnimKit/Source
 END
 akColor.h
 K 25
@@ -60,8 +60,8 @@ END
 akCommon.h
 K 25
 svn:wc:ra_dav:version-url
-V 52
-/svn/!svn/ver/939/branches/AnimKit/Source/akCommon.h
+V 53
+/svn/!svn/ver/1017/branches/AnimKit/Source/akCommon.h
 END
 akVertexGroup.h
 K 25
@@ -87,23 +87,35 @@ svn:wc:ra_dav:version-url
 V 59
 /svn/!svn/ver/951/branches/AnimKit/Source/akPoseBlender.cpp
 END
+akAnimationEngine.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/1020/branches/AnimKit/Source/akAnimationEngine.cpp
+END
 akPose.cpp
 K 25
 svn:wc:ra_dav:version-url
-V 52
-/svn/!svn/ver/934/branches/AnimKit/Source/akPose.cpp
+V 53
+/svn/!svn/ver/1017/branches/AnimKit/Source/akPose.cpp
 END
 akAnimationChannel.cpp
 K 25
 svn:wc:ra_dav:version-url
-V 64
-/svn/!svn/ver/951/branches/AnimKit/Source/akAnimationChannel.cpp
+V 65
+/svn/!svn/ver/1017/branches/AnimKit/Source/akAnimationChannel.cpp
 END
 akAnimationPlayerSet.cpp
 K 25
 svn:wc:ra_dav:version-url
-V 66
-/svn/!svn/ver/934/branches/AnimKit/Source/akAnimationPlayerSet.cpp
+V 67
+/svn/!svn/ver/1019/branches/AnimKit/Source/akAnimationPlayerSet.cpp
+END
+akAnimatedObject.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/1019/branches/AnimKit/Source/akAnimatedObject.cpp
 END
 akMathUtils.cpp
 K 25
@@ -114,8 +126,8 @@ END
 akSkeletonPose.cpp
 K 25
 svn:wc:ra_dav:version-url
-V 60
-/svn/!svn/ver/951/branches/AnimKit/Source/akSkeletonPose.cpp
+V 61
+/svn/!svn/ver/1010/branches/AnimKit/Source/akSkeletonPose.cpp
 END
 akGeometryDeformer.cpp
 K 25
@@ -132,8 +144,8 @@ END
 CMakeLists.txt
 K 25
 svn:wc:ra_dav:version-url
-V 56
-/svn/!svn/ver/963/branches/AnimKit/Source/CMakeLists.txt
+V 57
+/svn/!svn/ver/1017/branches/AnimKit/Source/CMakeLists.txt
 END
 btAlignedAllocator.h
 K 25
@@ -171,12 +183,6 @@ svn:wc:ra_dav:version-url
 V 56
 /svn/!svn/ver/934/branches/AnimKit/Source/akBufferInfo.h
 END
-akMesh.cpp
-K 25
-svn:wc:ra_dav:version-url
-V 52
-/svn/!svn/ver/950/branches/AnimKit/Source/akMesh.cpp
-END
 akAnimationPlayer.cpp
 K 25
 svn:wc:ra_dav:version-url
@@ -188,6 +194,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 59
 /svn/!svn/ver/939/branches/AnimKit/Source/akAnimationClip.h
+END
+akMesh.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/1018/branches/AnimKit/Source/akMesh.cpp
 END
 akMorphTarget.h
 K 25
@@ -207,23 +219,35 @@ svn:wc:ra_dav:version-url
 V 64
 /svn/!svn/ver/934/branches/AnimKit/Source/btAlignedObjectArray.h
 END
+akAnimationEngine.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/1020/branches/AnimKit/Source/akAnimationEngine.h
+END
 akPose.h
 K 25
 svn:wc:ra_dav:version-url
-V 50
-/svn/!svn/ver/934/branches/AnimKit/Source/akPose.h
+V 51
+/svn/!svn/ver/1017/branches/AnimKit/Source/akPose.h
 END
 akAnimationPlayerSet.h
 K 25
 svn:wc:ra_dav:version-url
-V 64
-/svn/!svn/ver/934/branches/AnimKit/Source/akAnimationPlayerSet.h
+V 65
+/svn/!svn/ver/1019/branches/AnimKit/Source/akAnimationPlayerSet.h
 END
 akAnimationChannel.h
 K 25
 svn:wc:ra_dav:version-url
 V 62
 /svn/!svn/ver/939/branches/AnimKit/Source/akAnimationChannel.h
+END
+akAnimatedObject.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/1019/branches/AnimKit/Source/akAnimatedObject.h
 END
 btAlignedAllocator.cpp
 K 25

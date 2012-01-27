@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 52
-/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib
+V 53
+/svn/!svn/ver/1007/branches/AnimKit/Dependencies/ZLib
 END
 configure
 K 25
@@ -120,8 +120,8 @@ END
 Makefile
 K 25
 svn:wc:ra_dav:version-url
-V 61
-/svn/!svn/ver/939/branches/AnimKit/Dependencies/ZLib/Makefile
+V 62
+/svn/!svn/ver/1007/branches/AnimKit/Dependencies/ZLib/Makefile
 END
 CMakeLists.txt
 K 25

@@ -1,15 +1,15 @@
 10
 
 dir
-1006
+1020
 http://gamekit.googlecode.com/svn/branches/AnimKit/Dependencies/FileTools/Strip
 http://gamekit.googlecode.com/svn
 
 
 
-2010-11-30T19:24:36.965627Z
-795
-harkon.kr@gmail.com
+2012-01-22T18:31:11.265919Z
+1016
+xavier.thomas.1980
 
 
 
@@ -32,11 +32,11 @@ file
 
 
 
-2011-12-19T21:18:37.893517Z
-ca8373e13b37a5499d01d3369430222f
-2010-11-30T19:24:36.965627Z
-795
-harkon.kr@gmail.com
+2012-01-27T13:46:06.000000Z
+8185c45f8961bfabacb307a9f00dfc30
+2012-01-22T18:31:11.265919Z
+1016
+xavier.thomas.1980
 
 
 
@@ -58,7 +58,7 @@ harkon.kr@gmail.com
 
 
 
-3775
+3772
 
 CMakeLists.txt
 file
@@ -66,7 +66,7 @@ file
 
 
 
-2011-12-19T21:18:37.893517Z
+2012-01-27T13:46:06.000000Z
 a74bd5a43fca9315c09734f736f3abad
 2010-11-19T09:05:04.887032Z
 786

@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 42
-/svn/!svn/ver/968/branches/AnimKit/Samples
+V 43
+/svn/!svn/ver/1019/branches/AnimKit/Samples
 END
 glut64.dll
 K 25
@@ -12,8 +12,8 @@ END
 akDemoBase.h
 K 25
 svn:wc:ra_dav:version-url
-V 55
-/svn/!svn/ver/968/branches/AnimKit/Samples/akDemoBase.h
+V 56
+/svn/!svn/ver/1019/branches/AnimKit/Samples/akDemoBase.h
 END
 akGlutDemo.h
 K 25
@@ -30,8 +30,8 @@ END
 akEntity.cpp
 K 25
 svn:wc:ra_dav:version-url
-V 55
-/svn/!svn/ver/968/branches/AnimKit/Samples/akEntity.cpp
+V 56
+/svn/!svn/ver/1019/branches/AnimKit/Samples/akEntity.cpp
 END
 glut32.dll
 K 25
@@ -42,8 +42,8 @@ END
 akDemoBase.cpp
 K 25
 svn:wc:ra_dav:version-url
-V 57
-/svn/!svn/ver/968/branches/AnimKit/Samples/akDemoBase.cpp
+V 58
+/svn/!svn/ver/1017/branches/AnimKit/Samples/akDemoBase.cpp
 END
 akGlutDemo.cpp
 K 25
@@ -54,8 +54,8 @@ END
 CMakeLists.txt
 K 25
 svn:wc:ra_dav:version-url
-V 57
-/svn/!svn/ver/939/branches/AnimKit/Samples/CMakeLists.txt
+V 58
+/svn/!svn/ver/1018/branches/AnimKit/Samples/CMakeLists.txt
 END
 glew32.dll
 K 25
@@ -66,6 +66,6 @@ END
 akEntity.h
 K 25
 svn:wc:ra_dav:version-url
-V 53
-/svn/!svn/ver/944/branches/AnimKit/Samples/akEntity.h
+V 54
+/svn/!svn/ver/1019/branches/AnimKit/Samples/akEntity.h
 END

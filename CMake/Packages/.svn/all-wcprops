@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 49
-/svn/!svn/ver/934/branches/AnimKit/CMake/Packages
+V 50
+/svn/!svn/ver/1007/branches/AnimKit/CMake/Packages
 END
 FindZLIB.cmake
 K 25
@@ -18,8 +18,8 @@ END
 FindGLUT.cmake
 K 25
 svn:wc:ra_dav:version-url
-V 64
-/svn/!svn/ver/830/branches/AnimKit/CMake/Packages/FindGLUT.cmake
+V 65
+/svn/!svn/ver/1007/branches/AnimKit/CMake/Packages/FindGLUT.cmake
 END
 FindGLEW.cmake
 K 25
