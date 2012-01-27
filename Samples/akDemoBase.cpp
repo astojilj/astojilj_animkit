@@ -31,8 +31,7 @@
 
 #include "akEntity.h"
 #include "akMesh.h"
-#include "akSkeleton.h"
-#include "akAnimationClip.h"
+#include "akAnimationEngine.h"
 
 #include "btAlignedAllocator.h"
 #ifdef OPENGL_ES_2_0
@@ -50,6 +49,8 @@ akDemoBase::akDemoBase() : m_frame(0), m_time(0), m_fpsLastTime(0), m_stepLastTi
     m_drawSkeleton(false), m_windowx(800), m_windowy(800)
 {
 	m_camera = (akCamera*) btAlignedAlloc(sizeof(akCamera), 16);
+	
+	m_animengine = new akAnimationEngine();
 }
 
 akDemoBase::~akDemoBase()
@@ -61,31 +62,15 @@ akDemoBase::~akDemoBase()
 		delete m_objects[i];
 	}
 	
-	for( i=0; i<m_animations.size(); i++)
-	{
-		delete m_animations[i];
-	}
-	
-	for( i=0; i<m_meshes.size(); i++)
-	{
-		delete m_meshes[i];
-	}
-	
-	for( i=0; i<m_skeletons.size(); i++)
-	{
-		delete m_skeletons[i];
-	}
-	
 	for( i=0; i<m_textures.size(); i++)
 	{
 		glDeleteTextures( 1, &m_textures[i] );
 	}
 	
-	m_meshes.clear();
-	m_skeletons.clear();
-	m_animations.clear();
 	m_objects.clear();
 	m_textures.clear();
+
+	delete m_animengine;
 
 	btAlignedFree(m_camera);
 }
@@ -134,10 +119,13 @@ void akDemoBase::start(void)
 void akDemoBase::step(akScalar time)
 {
 	unsigned int i;
+	
+	m_animengine->stepTime(time);
+	
 	for( i=0; i<m_objects.size(); i++)
 	{		
 		akEntity* object = m_objects.at(i);
-		object->step(time, m_dualQuatUse, m_normalMethod);
+		object->update(m_dualQuatUse, m_normalMethod);
 	}
 }
 
@@ -305,20 +293,6 @@ void akDemoBase::keyboardCallback(unsigned char key,int x, int y)
 	}
 }
 
-void akDemoBase::addAnimation(const utHashedString& name, akAnimationClip* anim)
-{
-	m_animations.insert(name.hash(), anim);
-}
-
-void akDemoBase::addMesh(const utHashedString& name, akMesh *mesh)
-{
-	m_meshes.insert(name.hash(), mesh);
-}
-
-void akDemoBase::addSkeleton(const utHashedString &name, akSkeleton *skel)
-{
-	m_skeletons.insert(name.hash(), skel);
-}
 
 void akDemoBase::addEntity(const utHashedString &name, akEntity *ent)
 {
@@ -328,30 +302,6 @@ void akDemoBase::addEntity(const utHashedString &name, akEntity *ent)
 void akDemoBase::addTexture(const utHashedString &name, GLuint tex)
 {
 	m_textures.insert(name.hash(), tex);
-}
-
-akAnimationClip* akDemoBase::getAnimation(const utHashedString &name)
-{
-	UTsize pos = m_animations.find(name.hash());
-	if(pos==UT_NPOS)
-		return 0;
-	return m_animations.at(pos);
-}
-
-akMesh * akDemoBase::getMesh(const utHashedString &name)
-{
-	UTsize pos = m_meshes.find(name.hash());
-	if(pos==UT_NPOS)
-		return 0;
-	return m_meshes.at(pos);
-}
-
-akSkeleton * akDemoBase::getSkeleton(const utHashedString &name)
-{
-	UTsize pos = m_skeletons.find(name.hash());
-	if(pos==UT_NPOS)
-		return 0;
-	return m_skeletons.at(pos);
 }
 
 akEntity * akDemoBase::getEntity(const utHashedString &name)

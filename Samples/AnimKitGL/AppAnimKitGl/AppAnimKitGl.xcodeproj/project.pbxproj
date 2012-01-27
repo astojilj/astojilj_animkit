@@ -90,6 +90,8 @@
 		A1BD7D3D14A3E7F6002F2D43 /* zutil.c in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7D0314A3E7F6002F2D43 /* zutil.c */; };
 		A1BD7E9114A5400F002F2D43 /* Blu.blend in Resources */ = {isa = PBXBuildFile; fileRef = A1BD7E9014A5400F002F2D43 /* Blu.blend */; };
 		A1BD7ECC14A5CC21002F2D43 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BD7ECB14A5CC21002F2D43 /* CoreAudio.framework */; };
+		A1F699BB14D360A9004E55C4 /* akAnimatedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1F699B714D360A9004E55C4 /* akAnimatedObject.cpp */; };
+		A1F699BC14D360A9004E55C4 /* akAnimationEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1F699B914D360A9004E55C4 /* akAnimationEngine.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -285,6 +287,10 @@
 		A1BD7D0314A3E7F6002F2D43 /* zutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zutil.c; path = ../../../Dependencies/ZLib/zutil.c; sourceTree = SOURCE_ROOT; };
 		A1BD7E9014A5400F002F2D43 /* Blu.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = Blu.blend; path = ../Blu.blend; sourceTree = SOURCE_ROOT; };
 		A1BD7ECB14A5CC21002F2D43 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		A1F699B714D360A9004E55C4 /* akAnimatedObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = akAnimatedObject.cpp; path = ../../../Source/akAnimatedObject.cpp; sourceTree = SOURCE_ROOT; };
+		A1F699B814D360A9004E55C4 /* akAnimatedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = akAnimatedObject.h; path = ../../../Source/akAnimatedObject.h; sourceTree = SOURCE_ROOT; };
+		A1F699B914D360A9004E55C4 /* akAnimationEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = akAnimationEngine.cpp; path = ../../../Source/akAnimationEngine.cpp; sourceTree = SOURCE_ROOT; };
+		A1F699BA14D360A9004E55C4 /* akAnimationEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = akAnimationEngine.h; path = ../../../Source/akAnimationEngine.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +343,10 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A1F699B714D360A9004E55C4 /* akAnimatedObject.cpp */,
+				A1F699B814D360A9004E55C4 /* akAnimatedObject.h */,
+				A1F699B914D360A9004E55C4 /* akAnimationEngine.cpp */,
+				A1F699BA14D360A9004E55C4 /* akAnimationEngine.h */,
 				A1BAE27114B64E6F00BDEF0C /* krava.blend */,
 				A1BAE22214B516D500BDEF0C /* Turtle.blend */,
 				A1BD7E9014A5400F002F2D43 /* Blu.blend */,
@@ -921,6 +931,8 @@
 				A1BD7D3A14A3E7F6002F2D43 /* trees.c in Sources */,
 				A1BD7D3B14A3E7F6002F2D43 /* uncompr.c in Sources */,
 				A1BD7D3D14A3E7F6002F2D43 /* zutil.c in Sources */,
+				A1F699BB14D360A9004E55C4 /* akAnimatedObject.cpp in Sources */,
+				A1F699BC14D360A9004E55C4 /* akAnimationEngine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

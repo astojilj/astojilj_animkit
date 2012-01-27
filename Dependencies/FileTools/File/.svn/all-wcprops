@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 62
-/svn/!svn/ver/939/branches/AnimKit/Dependencies/FileTools/File
+V 63
+/svn/!svn/ver/1016/branches/AnimKit/Dependencies/FileTools/File
 END
 fbtScanner.l
 K 25
@@ -24,8 +24,8 @@ END
 fbtFile.h
 K 25
 svn:wc:ra_dav:version-url
-V 72
-/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/File/fbtFile.h
+V 73
+/svn/!svn/ver/1016/branches/AnimKit/Dependencies/FileTools/File/fbtFile.h
 END
 fbtPlatformHeaders.h
 K 25
@@ -42,8 +42,8 @@ END
 fbtTypes.h
 K 25
 svn:wc:ra_dav:version-url
-V 73
-/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/File/fbtTypes.h
+V 74
+/svn/!svn/ver/1016/branches/AnimKit/Dependencies/FileTools/File/fbtTypes.h
 END
 fbtTables.cpp
 K 25
@@ -78,12 +78,12 @@ END
 fbtFile.cpp
 K 25
 svn:wc:ra_dav:version-url
-V 74
-/svn/!svn/ver/934/branches/AnimKit/Dependencies/FileTools/File/fbtFile.cpp
+V 75
+/svn/!svn/ver/1016/branches/AnimKit/Dependencies/FileTools/File/fbtFile.cpp
 END
 CMakeLists.txt
 K 25
 svn:wc:ra_dav:version-url
-V 77
-/svn/!svn/ver/939/branches/AnimKit/Dependencies/FileTools/File/CMakeLists.txt
+V 78
+/svn/!svn/ver/1016/branches/AnimKit/Dependencies/FileTools/File/CMakeLists.txt
 END

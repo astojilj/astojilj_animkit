@@ -34,6 +34,8 @@
 #include "akSkeletonPose.h"
 #include "akGeometryDeformer.h"
 #include "akAnimationPlayerSet.h"
+#include "akAnimationEngine.h"
+#include "akAnimatedObject.h"
 
 #if defined __APPLE__ && defined OPENGL_ES_2_0
 #include "Pathes.h"
@@ -51,14 +53,14 @@ akDemo::~akDemo()
 
 void akDemo::init(void)
 {
-	akBLoader loader(this);
+	akBLoader loader(this, m_animengine);
 #ifdef QT_BUILD
     loader.loadFile("/usr/share/animkitdemo/Blu.blend", false, true);
 #else
     #if defined __APPLE__ && defined OPENGL_ES_2_0
 		char absolutePath[512], bundleDir[512];
 		GetResourcePathASCII(bundleDir,512);
-		sprintf(absolutePath,"%s/%s",bundleDir,"Blu.blend");
+		sprintf(absolutePath,"%s/%s",bundleDir,"krava.blend");
 		loader.loadFile(absolutePath, false, true);	
     #else
 		loader.loadFile("Blu.blend", false, true);
@@ -72,8 +74,8 @@ void akDemo::init(void)
 		square->setPositionAnimated(true);
 	
     // Join the morph action and the rest action together.
-	akAnimationClip* bluc = getAnimation("Rest");
-	akAnimationClip* morphc = getAnimation("KeyAction");
+	akAnimationClip* bluc = m_animengine->getAnimationClip("Rest");
+	akAnimationClip* morphc = m_animengine->getAnimationClip("KeyAction");
 	if(bluc && morphc)
 	{
 		akAnimationChannel* chan = morphc->getChannel("Key 1");
@@ -88,7 +90,7 @@ void akDemo::init(void)
 	akEntity* blu = getEntity("Blu");
 	if(blu)
 	{
-		akAnimationPlayer* play = blu->getAnimationPlayers()->getAnimationPlayer(0);
+		akAnimationPlayer* play = blu->getAnimatedObject()->getAnimationPlayers()->getAnimationPlayer(0);
 		akSkeleton* skel = blu->getSkeleton();
 		if(play && skel)
 		{
