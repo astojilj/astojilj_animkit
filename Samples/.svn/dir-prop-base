@@ -1,6 +1,0 @@
-K 13
-svn:externals
-V 49
-Glut http://bullet.googlecode.com/svn/trunk/Glut
-
-END
