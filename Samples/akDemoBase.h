@@ -62,7 +62,7 @@ public:
 	void idleCallback(void);
 	void keyboardCallback(unsigned char key,int x,int y);
 	
-	void render(void);
+	virtual void render(void);
 	
 	int getFps(void);
 	

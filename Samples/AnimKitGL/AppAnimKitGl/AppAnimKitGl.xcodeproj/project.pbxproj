@@ -19,6 +19,8 @@
 		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
+		A191B73514EFAECE007C0F57 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A191B73414EFAECE007C0F57 /* Timer.cpp */; };
+		A191B78814EFC9FB007C0F57 /* columbine.blend in Resources */ = {isa = PBXBuildFile; fileRef = A191B78714EFC9FB007C0F57 /* columbine.blend */; };
 		A1BAE22314B516D500BDEF0C /* Turtle.blend in Resources */ = {isa = PBXBuildFile; fileRef = A1BAE22214B516D500BDEF0C /* Turtle.blend */; };
 		A1BAE27214B64E6F00BDEF0C /* krava.blend in Resources */ = {isa = PBXBuildFile; fileRef = A1BAE27114B64E6F00BDEF0C /* krava.blend */; };
 		A1BD7BC914A3E647002F2D43 /* akDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7BC514A3E647002F2D43 /* akDemo.cpp */; };
@@ -31,7 +33,7 @@
 		A1BD7BF514A3E776002F2D43 /* akMeshLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7BEE14A3E776002F2D43 /* akMeshLoader.cpp */; };
 		A1BD7BF614A3E776002F2D43 /* akTextureLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7BF014A3E776002F2D43 /* akTextureLoader.cpp */; };
 		A1BD7C3D14A3E7A5002F2D43 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7C0314A3E7A5002F2D43 /* Matrix.cpp */; };
-		A1BD7C3E14A3E7A5002F2D43 /* neon_matrix_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7C0614A3E7A5002F2D43 /* neon_matrix_impl.cpp */; };
+		A1BD7C3E14A3E7A5002F2D43 /* neon_matrix_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7C0614A3E7A5002F2D43 /* neon_matrix_impl.cpp */; settings = {COMPILER_FLAGS = "-marm"; }; };
 		A1BD7C3F14A3E7A5002F2D43 /* Random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7C0914A3E7A5002F2D43 /* Random.cpp */; };
 		A1BD7C4014A3E7A5002F2D43 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7C0B14A3E7A5002F2D43 /* Transform.cpp */; };
 		A1BD7C4114A3E7A5002F2D43 /* Vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7C0D14A3E7A5002F2D43 /* Vector.cpp */; };
@@ -113,6 +115,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* AppAnimKitGl_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppAnimKitGl_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* AppAnimKitGl-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AppAnimKitGl-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A191B73414EFAECE007C0F57 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Timer.cpp; path = ../../../GLES20/Utility/Timer.cpp; sourceTree = SOURCE_ROOT; };
+		A191B78714EFC9FB007C0F57 /* columbine.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = columbine.blend; path = ../columbine.blend; sourceTree = SOURCE_ROOT; };
 		A1BAE22214B516D500BDEF0C /* Turtle.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = Turtle.blend; path = ../Turtle.blend; sourceTree = SOURCE_ROOT; };
 		A1BAE27114B64E6F00BDEF0C /* krava.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = krava.blend; path = ../krava.blend; sourceTree = SOURCE_ROOT; };
 		A1BD7BC514A3E647002F2D43 /* akDemo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = akDemo.cpp; path = ../akDemo.cpp; sourceTree = SOURCE_ROOT; };
@@ -343,6 +347,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A191B78714EFC9FB007C0F57 /* columbine.blend */,
+				A191B73414EFAECE007C0F57 /* Timer.cpp */,
 				A1F699B714D360A9004E55C4 /* akAnimatedObject.cpp */,
 				A1F699B814D360A9004E55C4 /* akAnimatedObject.h */,
 				A1F699B914D360A9004E55C4 /* akAnimationEngine.cpp */,
@@ -853,6 +859,7 @@
 				A1BD7E9114A5400F002F2D43 /* Blu.blend in Resources */,
 				A1BAE22314B516D500BDEF0C /* Turtle.blend in Resources */,
 				A1BAE27214B64E6F00BDEF0C /* krava.blend in Resources */,
+				A191B78814EFC9FB007C0F57 /* columbine.blend in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -933,6 +940,7 @@
 				A1BD7D3D14A3E7F6002F2D43 /* zutil.c in Sources */,
 				A1F699BB14D360A9004E55C4 /* akAnimatedObject.cpp in Sources */,
 				A1F699BC14D360A9004E55C4 /* akAnimationEngine.cpp in Sources */,
+				A191B73514EFAECE007C0F57 /* Timer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -955,7 +963,9 @@
 				);
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = "AppAnimKitGl-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = AppAnimKitGl;
+				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "../../../Dependencies/vectormath ../../../GLES20/Include";
 			};
 			name = Debug;
@@ -969,7 +979,9 @@
 				GCC_PREFIX_HEADER = AppAnimKitGl_Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = "AppAnimKitGl-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = AppAnimKitGl;
+				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

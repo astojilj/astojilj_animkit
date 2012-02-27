@@ -199,14 +199,8 @@ static unsigned int glutGet(unsigned int i)
 {
     assert(i == GLUT_ELAPSED_TIME);
     // elapsed time since last simulation step. used when calling physics.stepSimulation
-    static structTimer elapsedTimer;
-    static bool init = false;
-    if (!init) {
-        StartTimer(&elapsedTimer);
-        ResetTimer(&elapsedTimer);
-        init = true;
-    }
-    return 1000 * elapsedTimeInS(&elapsedTimer);
+    static ElapsedTimer elapsedTimer;
+    return 1000 * elapsedTimer.elapsed();
 }
 
 #endif

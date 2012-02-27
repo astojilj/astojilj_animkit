@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=AnimKit Demo
+Exec=/usr/bin/gles20farm
+Icon=/usr/share/gles20farm/icon.png

@@ -20,7 +20,7 @@ using namespace std;
 //! support only GLES 2.0 on MeeGo
 int __OPENGLES_VERSION = 2;
 
-const char *APPLICATION_RESOURCES_INSTALL_DIR = "/usr/share/animkitdemo/";
+const char *APPLICATION_RESOURCES_INSTALL_DIR = "/usr/share/gles20farm/";
 
 void GetResourcePathASCII(char* cBuffer, int iLength)
 {

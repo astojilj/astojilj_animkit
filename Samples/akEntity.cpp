@@ -34,7 +34,6 @@
 #include "akDualQuat.h"
 #include "akPose.h"
 
-#ifdef OPENGL_ES_2_0
 #include "piper.h"
 #define GL_ARRAY_BUFFER_ARB GL_ARRAY_BUFFER
 #define GL_ELEMENT_ARRAY_BUFFER_ARB GL_ELEMENT_ARRAY_BUFFER
@@ -42,14 +41,11 @@
 #define glPushMatrix(); Piper::instance()->pushMatrix(Piper::MODEL);
 #define glPopMatrix(); Piper::instance()->popMatrix(Piper::MODEL);
 #define glMultMatrixf(a) Piper::instance()->multMatrix(a,Piper::MODEL)
-#endif
 
 akEntity::akEntity(const utHashedString &name) : m_name(name), m_mesh(0), m_skeleton(0), m_animatedObject(0),
 	m_useDualQuatSkinning(false), m_posAnimated(false), m_morphAnimated(false), m_useVbo(false)
 {
-#ifdef OPENGL_ES_2_0
 m_useVbo = true;
-#endif
 }
 
 akEntity::~akEntity()
@@ -292,23 +288,13 @@ void akEntity::draw(bool drawNormal, bool drawColor, bool textured, bool useVbo,
 			bool hasnormals = norbuf && sm->hasNormals();
 			bool texture = uvbuf && m_textures[j] && textured && sm->getUVLayerCount() >=1;
 	
-#ifndef OPENGL_ES_2_0
-            if(shaded)
-				glEnable(GL_LIGHTING);
-			else
-				glDisable(GL_LIGHTING);
-#endif
 			if(texture)
 			{
                 glEnable(GL_TEXTURE_2D);
 				glBindTexture(GL_TEXTURE_2D, m_textures[j]);
 
-#ifndef OPENGL_ES_2_0
-                glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-#else
 				// internal tricks - alpha == 0.99 means no outline
                 Piper::instance()->glColor4f(1.f, 0.f, 0.f, m_skeleton ? 1.0f : 0.99f);
-#endif
 			}
 			
 			if(m_useVbo && useVbo)
@@ -328,17 +314,9 @@ void akEntity::draw(bool drawNormal, bool drawColor, bool textured, bool useVbo,
 				{
 					glEnableClientState(GL_COLOR_ARRAY);
 					glColorPointer(4, GL_UNSIGNED_BYTE, colorbuf->stride, (GLvoid*)colorbuf->getOffset());
-#ifdef OPENGL_ES_2_0
                     if (!texture)
                         // using alpha to instruct shader what to use, among other things
                         Piper::instance()->glColor4f(1.f, 0.f, 0.f, 0.15f);
-#endif                    
-				}
-				else
-				{
-#ifndef OPENGL_ES_2_0
-                    glColor3f(0,0,0);
-#endif
 				}
 				if(texture)
 				{
@@ -348,11 +326,7 @@ void akEntity::draw(bool drawNormal, bool drawColor, bool textured, bool useVbo,
 				
 				glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, m_staticIndexVboIds[j]);
 
-#ifdef OPENGL_ES_2_0
                 Piper::instance()->glDrawElements(GL_TRIANGLES, tot, GL_UNSIGNED_SHORT, (GLvoid*)idxbuf->getOffset());
-#else
-                glDrawElements(GL_TRIANGLES, tot, GL_UNSIGNED_INT, (GLvoid*)idxbuf->getOffset());
-#endif
 				glDisableClientState(GL_VERTEX_ARRAY);
 				glDisableClientState(GL_NORMAL_ARRAY);
 				glDisableClientState(GL_COLOR_ARRAY);
@@ -362,78 +336,11 @@ void akEntity::draw(bool drawNormal, bool drawColor, bool textured, bool useVbo,
 			}
 			else
 			{
-#ifdef OPENGL_ES_2_0
                 assert(false);
-#else
-                glBegin(GL_TRIANGLES);
-				
-				if(!color)
-					glColor3f(0,0,0);
-					
-				unsigned int i;
-				for(i=0; i<tot; i++)
-				{
-					UTuint32* id = (UTuint32*)idxbuf->data;
-					akVector3* v = (akVector3*)posbuf->data;
-					
-					akAdvancePointer(id, i * idxbuf->stride);
-					akAdvancePointer(v, *id * posbuf->stride);
-					
-					if(color)
-					{
-						UTuint8* c = (UTuint8*)colorbuf->data;
-						akAdvancePointer(c, *id * colorbuf->stride);
-						glColor4ub(c[0], c[1], c[2], c[3]);
-					}
-					
-					if(texture)
-					{
-						float* uv = (float*)uvbuf->data;
-						akAdvancePointer(uv, *id * uvbuf->stride);
-						glTexCoord2f(uv[0],uv[1]);
-					}
-					
-					if(hasnormals)
-					{
-						akVector3* n = (akVector3*)norbuf->data;
-						akAdvancePointer(n, *id * norbuf->stride);
-						glNormal3f(n->getX(), n->getY(), n->getZ());
-					}
-					
-					glVertex3f(v->getX(), v->getY(), v->getZ());
-					
-				}
-				glEnd();
-#endif
 			}
 			glBindTexture(GL_TEXTURE_2D, 0);
 			
-			// normals
-			if(drawNormal && hasnormals)
-			{
-#ifndef OPENGL_ES_2_0
-                glDisable(GL_LIGHTING);
-				glBegin(GL_LINES);
-				glColor3f(0, .5, .8);
-				
-				UTuint32 tot = ibuf->getSize();
-				for(unsigned int i=0; i<tot; i++)
-				{
-					UTuint32* id = (UTuint32*)idxbuf->data;
-					akVector3* v = (akVector3*)posbuf->data;
-					akVector3* n = (akVector3*)norbuf->data;
-					
-					akAdvancePointer(id, i * idxbuf->stride);
-					akAdvancePointer(v, *id * posbuf->stride);
-					akAdvancePointer(n, *id * norbuf->stride);
-					
-					akVector3 norm = *v + 0.05f * (*n);
-					glVertex3f(v->getX(), v->getY(), v->getZ());
-					glVertex3f(norm.getX(), norm.getY(), norm.getZ());
-				}
-				glEnd();
-#endif
-			}
+			
 		}
 	}
 	
@@ -441,9 +348,6 @@ void akEntity::draw(bool drawNormal, bool drawColor, bool textured, bool useVbo,
 	{
         akSkeletonPose* skelpose = m_animatedObject->getPose()->getSkeletonPose();
 		
-#ifndef OPENGL_ES_2_0
-        glDisable(GL_LIGHTING);
-#endif
         glDisable(GL_DEPTH_TEST);
 		
 		if(skelpose)
@@ -464,22 +368,6 @@ void akEntity::draw(bool drawNormal, bool drawColor, bool textured, bool useVbo,
 				akMatrix4 mat = jointpose->toMatrix();
 				
 				glMultMatrixf((GLfloat*)&mat);
-#ifndef OPENGL_ES_2_0
-				
-				glBegin(GL_LINES);
-				glColor3f(1,0,0);
-				glVertex3f(0.05,0,0);
-				glVertex3f(0,0,0);
-				
-				glColor3f(0,1,0);
-				glVertex3f(0,0.05,0);
-				glVertex3f(0,0,0);
-				
-				glColor3f(0,0,1);
-				glVertex3f(0,0,0.05);
-				glVertex3f(0,0,0);
-				glEnd();
-#else
                 /*            Piper::instance()->glColor4f(1.0f, 0.0f, 0.0f, 0.0f);
                  GLfloat indices[] = {
                  0.05,0,0,
@@ -493,7 +381,6 @@ void akEntity::draw(bool drawNormal, bool drawColor, bool textured, bool useVbo,
                  Piper::instance()->glDrawElements(GL_LINES,3, GL_FLOAT, indices);
                  Piper::instance()->glColor4f(0.f, 0.f, 0.f, 1.0f);
                  */ 
-#endif
 				
 				glPopMatrix();
 			}

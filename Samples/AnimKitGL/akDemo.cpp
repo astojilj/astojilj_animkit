@@ -60,7 +60,8 @@ void akDemo::init(void)
     #if defined __APPLE__ && defined OPENGL_ES_2_0
 		char absolutePath[512], bundleDir[512];
 		GetResourcePathASCII(bundleDir,512);
-		sprintf(absolutePath,"%s/%s",bundleDir,"Blu.blend");
+//		sprintf(absolutePath,"%s/%s",bundleDir,"columbine.blend");
+    		sprintf(absolutePath,"%s/%s",bundleDir,"Blu.blend");
 		loader.loadFile(absolutePath, false, true);	
     #else
 		loader.loadFile("Blu.blend", false, true);
