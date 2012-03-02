@@ -36,7 +36,7 @@ void PiperGL20::multMatrix(const MATRIX &matrix, Mode mode)
 // copied from -> Oolong Engine2/Examples/Renderer/Tutorials/08 Shaders Demo (3DShaders.com)/Classes/Application.mm
 // FIXME refactor
 char *shaders_name[] = {
-    (char *)"Toon"
+    (char *)"SkinnedCharacter"
 };
 
 int total_shaders = sizeof(shaders_name) / sizeof(shaders_name[0]);
@@ -139,8 +139,6 @@ void PiperGL20::setupChangedVariables()
 	ShaderData *shader = shaderManager->shaderAt(active_shader);
 	// Then passes the matrix to that variable
 	glUniformMatrix4fv( shader->PMVMatrixHandle, 1, GL_FALSE, mMVP.f);
-	glUniformMatrix4fv( shader->MVMatrixHandle, 1, GL_FALSE, mModelView.f);
-	glUniformMatrix4fv( shader->ModelMatrixHandle, 1, GL_FALSE, mModel.f);
 	glUniformMatrix4fv( shader->ViewMatrixHandle, 1, GL_FALSE, mView.f);
 	glUniformMatrix4fv( shader->TIMMatrixHandle, 1, GL_FALSE, mTIM.f);
 
@@ -170,4 +168,16 @@ void PiperGL20::glColor4f(	GLfloat red, GLfloat green, GLfloat blue, GLfloat alp
     color[1] = green;
     color[2] = blue;
     color[3] = alpha;
+}
+
+extern PiperGL20 *instance20;
+
+PiperGL20 *PiperGL20::instance()
+{
+    return instance20;
+}
+
+const ShaderData *PiperGL20::currentShader() const
+{
+    return shaderManager->shaderAt(active_shader);
 }

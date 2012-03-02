@@ -21,6 +21,10 @@
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		A191B73514EFAECE007C0F57 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A191B73414EFAECE007C0F57 /* Timer.cpp */; };
 		A191B78814EFC9FB007C0F57 /* columbine.blend in Resources */ = {isa = PBXBuildFile; fileRef = A191B78714EFC9FB007C0F57 /* columbine.blend */; };
+		A1A0A9711500238900C1297B /* SkinnedCharacter.frag in Sources */ = {isa = PBXBuildFile; fileRef = A1A0A96F1500238900C1297B /* SkinnedCharacter.frag */; };
+		A1A0A9721500238900C1297B /* SkinnedCharacter.vert in Sources */ = {isa = PBXBuildFile; fileRef = A1A0A9701500238900C1297B /* SkinnedCharacter.vert */; };
+		A1A0A9731500246000C1297B /* SkinnedCharacter.frag in Resources */ = {isa = PBXBuildFile; fileRef = A1A0A96F1500238900C1297B /* SkinnedCharacter.frag */; };
+		A1A0A9741500246000C1297B /* SkinnedCharacter.vert in Resources */ = {isa = PBXBuildFile; fileRef = A1A0A9701500238900C1297B /* SkinnedCharacter.vert */; };
 		A1BAE22314B516D500BDEF0C /* Turtle.blend in Resources */ = {isa = PBXBuildFile; fileRef = A1BAE22214B516D500BDEF0C /* Turtle.blend */; };
 		A1BAE27214B64E6F00BDEF0C /* krava.blend in Resources */ = {isa = PBXBuildFile; fileRef = A1BAE27114B64E6F00BDEF0C /* krava.blend */; };
 		A1BD7BC914A3E647002F2D43 /* akDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7BC514A3E647002F2D43 /* akDemo.cpp */; };
@@ -117,6 +121,8 @@
 		8D1107310486CEB800E47090 /* AppAnimKitGl-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AppAnimKitGl-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A191B73414EFAECE007C0F57 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Timer.cpp; path = ../../../GLES20/Utility/Timer.cpp; sourceTree = SOURCE_ROOT; };
 		A191B78714EFC9FB007C0F57 /* columbine.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = columbine.blend; path = ../columbine.blend; sourceTree = SOURCE_ROOT; };
+		A1A0A96F1500238900C1297B /* SkinnedCharacter.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = SkinnedCharacter.frag; path = ../../gles20farm/SkinnedCharacter.frag; sourceTree = "<group>"; };
+		A1A0A9701500238900C1297B /* SkinnedCharacter.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = SkinnedCharacter.vert; path = ../../gles20farm/SkinnedCharacter.vert; sourceTree = "<group>"; };
 		A1BAE22214B516D500BDEF0C /* Turtle.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = Turtle.blend; path = ../Turtle.blend; sourceTree = SOURCE_ROOT; };
 		A1BAE27114B64E6F00BDEF0C /* krava.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = krava.blend; path = ../krava.blend; sourceTree = SOURCE_ROOT; };
 		A1BD7BC514A3E647002F2D43 /* akDemo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = akDemo.cpp; path = ../akDemo.cpp; sourceTree = SOURCE_ROOT; };
@@ -347,6 +353,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A1A0A96F1500238900C1297B /* SkinnedCharacter.frag */,
+				A1A0A9701500238900C1297B /* SkinnedCharacter.vert */,
 				A191B78714EFC9FB007C0F57 /* columbine.blend */,
 				A191B73414EFAECE007C0F57 /* Timer.cpp */,
 				A1F699B714D360A9004E55C4 /* akAnimatedObject.cpp */,
@@ -849,6 +857,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1A0A9731500246000C1297B /* SkinnedCharacter.frag in Resources */,
+				A1A0A9741500246000C1297B /* SkinnedCharacter.vert in Resources */,
 				2514C27B10084DCA00A42282 /* Shader.fsh in Resources */,
 				A1BD7BD114A3E6A4002F2D43 /* Toon.frag in Resources */,
 				A1BD7BDE14A3E6F6002F2D43 /* Toon.vert in Resources */,
@@ -941,6 +951,8 @@
 				A1F699BB14D360A9004E55C4 /* akAnimatedObject.cpp in Sources */,
 				A1F699BC14D360A9004E55C4 /* akAnimationEngine.cpp in Sources */,
 				A191B73514EFAECE007C0F57 /* Timer.cpp in Sources */,
+				A1A0A9711500238900C1297B /* SkinnedCharacter.frag in Sources */,
+				A1A0A9721500238900C1297B /* SkinnedCharacter.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

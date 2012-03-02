@@ -12,6 +12,7 @@
 
 #include "piper.h"
 #include "piper_p.h"
+#include "shaderData.h"
 
 class ShaderManager;
 
@@ -32,6 +33,9 @@ public:
 	void initFrame();
     void glColor4f(	GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
 	//@end_reimp
+    
+    static PiperGL20 *instance();
+    const ShaderData *currentShader() const;
 
 private:
 	void init();

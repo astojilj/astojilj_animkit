@@ -313,7 +313,7 @@ const akBufferInfo* akSubMesh::getVertexBuffer()
 		if(m_hasSkinningData)
 		{
 			m_vertexBuffer.addElement(akBufferInfo::BI_DU_BONE_IDX, akBufferInfo::VB_DT_4UINT8, 4*sizeof(UTuint8), &m_boneIndices[0], &m_boneIndices[0]);
-			m_vertexBuffer.addElement(akBufferInfo::BI_DU_BONE_WEIGHT, akBufferInfo::VB_DT_4FLOAT32, 4*sizeof(float), &m_boneWeights[0], &m_boneIndices[0]);
+			m_vertexBuffer.addElement(akBufferInfo::BI_DU_BONE_WEIGHT, akBufferInfo::VB_DT_4FLOAT32, 4*sizeof(float), &m_boneWeights[0], &m_boneWeights[0]);
 		}
 		
 		m_vBufDirty = false;

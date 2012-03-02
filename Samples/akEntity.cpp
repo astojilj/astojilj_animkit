@@ -35,6 +35,10 @@
 #include "akPose.h"
 
 #include "piper.h"
+#if OPENGL_ES_2_0
+#include "piperGL20.h"
+#endif
+
 #define GL_ARRAY_BUFFER_ARB GL_ARRAY_BUFFER
 #define GL_ELEMENT_ARRAY_BUFFER_ARB GL_ELEMENT_ARRAY_BUFFER
 #define glBindBufferARB glBindBuffer
@@ -43,9 +47,9 @@
 #define glMultMatrixf(a) Piper::instance()->multMatrix(a,Piper::MODEL)
 
 akEntity::akEntity(const utHashedString &name) : m_name(name), m_mesh(0), m_skeleton(0), m_animatedObject(0),
-	m_useDualQuatSkinning(false), m_posAnimated(false), m_morphAnimated(false), m_useVbo(false)
+	m_useDualQuatSkinning(false), m_useGPUSkinning(false), m_posAnimated(false), m_morphAnimated(false), m_useVbo(false)
 {
-m_useVbo = true;
+    m_useVbo = true;
 }
 
 akEntity::~akEntity()
@@ -56,6 +60,9 @@ akEntity::~akEntity()
 	m_posnoVertexVboIds.clear();
 	m_staticVertexVboIds.clear();
 	m_staticIndexVboIds.clear();
+    
+    m_boneWeightVboIds.clear();
+    m_boneIndexVboIds.clear();
 	
 	m_textures.clear();
 }
@@ -70,6 +77,10 @@ static void convertUint2Ushort(unsigned int *source, unsigned short *target, uns
         target[i] = (unsigned short) source[i];
     }
 }
+
+#ifdef OPENGL_ES_2_0
+#define OPENGL_ES_2_0_GPU_SKINNING			
+#endif
 
 void akEntity::init(bool useVbo, akDemoBase* demo)
 {
@@ -96,9 +107,18 @@ void akEntity::init(bool useVbo, akDemoBase* demo)
 		m_staticVertexVboIds.resize(nsub);
 		m_staticIndexVboIds.resize(nsub);
 
+#ifdef OPENGL_ES_2_0_GPU_SKINNING
+        if (isMeshDeformedBySkeleton()) {
+            m_boneIndexVboIds.resize(nsub);
+            m_boneWeightVboIds.resize(nsub);
+            glGenBuffers(nsub, &m_boneIndexVboIds[0]);
+            glGenBuffers(nsub, &m_boneWeightVboIds[0]);            
+        }
+#endif
 		glGenBuffers(nsub, &m_posnoVertexVboIds[0]);
 		glGenBuffers(nsub, &m_staticVertexVboIds[0]);
 		glGenBuffers(nsub, &m_staticIndexVboIds[0]);
+        
 		
 		for(int i=0; i<nsub; i++)
 		{
@@ -123,6 +143,18 @@ void akEntity::init(bool useVbo, akDemoBase* demo)
             convertUint2Ushort((unsigned int*) idata, indexData2UShort, ni);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER_ARB, m_staticIndexVboIds[i]);
 			glBufferData(GL_ELEMENT_ARRAY_BUFFER_ARB, ni*(idatas/2), indexData2UShort, GL_STATIC_DRAW);
+#ifdef OPENGL_ES_2_0_GPU_SKINNING
+            if (isMeshDeformedBySkeleton()) {
+                void *boneIndexData = sub->getBoneIndexDataPtr();
+                void *boneWeightsData = sub->getBoneWeightsDataPtr();
+                
+                glBindBuffer(GL_ARRAY_BUFFER_ARB, m_boneIndexVboIds[i]);
+                glBufferData(GL_ARRAY_BUFFER_ARB, nv*4*sizeof(UTuint8), boneIndexData, GL_STATIC_DRAW);
+                
+                glBindBuffer(GL_ARRAY_BUFFER_ARB, m_boneWeightVboIds[i]);
+                glBufferData(GL_ARRAY_BUFFER_ARB, nv*4*sizeof(float), boneWeightsData, GL_STATIC_DRAW);
+            }
+#endif
 		}
 	}
 	
@@ -237,7 +269,16 @@ void akEntity::update(int dualQuat, int normalsMethod)
 				pose->fillDualQuatPalette(m_dualquatPalette, m_matrixPalette);
 			else
 				pose->fillMatrixPalette(m_matrixPalette);
-			
+
+            
+#ifdef OPENGL_ES_2_0_GPU_SKINNING                
+            if(m_animatedObject && PiperGL20::instance())
+            {
+                if(isMeshDeformed() && !m_mesh->hasMorphTargets() && pose && pose->getSkeletonPose())
+                    // if GPU skinning, no need to copy invertices -> outvertices and updateVBO
+                    return;
+            }
+#endif            
 			m_mesh->deform((akGeometryDeformer::SkinningOption)dq, (akGeometryDeformer::NormalsOption)nm,
 						   pose, &m_matrixPalette, &m_dualquatPalette);
 			
@@ -265,7 +306,12 @@ void akEntity::draw(bool drawNormal, bool drawColor, bool textured, bool useVbo,
 			
 			const akBufferInfo::Element *posbuf, *norbuf, *idxbuf, *uvbuf, *colorbuf;
 			
-			if(isMeshDeformed())
+            bool useGPUSkinning(false);
+#ifdef OPENGL_ES_2_0_GPU_SKINNING                
+            if(isMeshDeformedBySkeleton())
+                useGPUSkinning = true;
+#endif            
+            if(isMeshDeformed() && !(useGPUSkinning && !isMeshDeformedByMorphing()))
 			{
 				posbuf = vbuf->getElement(akBufferInfo::BI_DU_VERTEX, akBufferInfo::VB_DT_3FLOAT32, 2);
 				norbuf = vbuf->getElement(akBufferInfo::BI_DU_NORMAL, akBufferInfo::VB_DT_3FLOAT32, 2);
@@ -323,14 +369,56 @@ void akEntity::draw(bool drawNormal, bool drawColor, bool textured, bool useVbo,
                     glTexCoordPointer(2, GL_FLOAT, uvbuf->stride, (GLvoid*)uvbuf->getOffset());
                     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
                 }
-				
-				glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, m_staticIndexVboIds[j]);
+                
+                
+#ifdef OPENGL_ES_2_0_GPU_SKINNING                
+                if(m_animatedObject && PiperGL20::instance())
+                {
+                    akPose* pose = m_animatedObject->getPose();
+                    if(isMeshDeformedBySkeleton()) {
+                        
+                        const akBufferInfo::Element *indicesbuf, *weightsbuf;
+                        
+                        indicesbuf = vbuf->getElement(akBufferInfo::BI_DU_BONE_IDX, akBufferInfo::VB_DT_4UINT8, 1);
+                        weightsbuf = vbuf->getElement(akBufferInfo::BI_DU_BONE_WEIGHT, akBufferInfo::VB_DT_4FLOAT32, 1);
+                        
+                        // Number of bones influencing one vertex in the mesh
+                        glUniform1i(PiperGL20::instance()->currentShader()->BoneCountHandle, 4);
+                        
+                        // matrix palete and normals
+                        akMatrix4 *matrixData = new akMatrix4[m_matrixPalette.size()];
+                        for (int matrixIndex = 0; matrixIndex < m_matrixPalette.size(); matrixIndex++) {
+                            matrixData[matrixIndex] = m_matrixPalette[matrixIndex];
+                        }
+                        glUniformMatrix4fv(PiperGL20::instance()->currentShader()->BoneMatricesHandle, m_matrixPalette.size(), GL_FALSE, (float*)matrixData);
+                        
+				        glBindBufferARB(GL_ARRAY_BUFFER_ARB, m_boneWeightVboIds[j]);
+                        glEnableVertexAttribArray(GL_BONEWEIGHT_ARRAY);
+                        glVertexAttribPointer(GL_BONEWEIGHT_ARRAY, 4, GL_FLOAT, GL_FALSE, weightsbuf->stride, (GLvoid*) weightsbuf->getOffset());
+                        
+				        glBindBufferARB(GL_ARRAY_BUFFER_ARB, m_boneIndexVboIds[j]);
+                        glEnableVertexAttribArray(GL_BONEINDEX_ARRAY);
+                        glVertexAttribPointer(GL_BONEINDEX_ARRAY, 4, GL_UNSIGNED_BYTE, GL_FALSE, indicesbuf->stride, (GLvoid*) indicesbuf->getOffset());
 
+                    }
+                }
+
+				if (!useGPUSkinning && PiperGL20::instance()) {
+                    // since we use the same shader, turing off matrix skinning this way
+                    glUniform1i(PiperGL20::instance()->currentShader()->BoneCountHandle, 0);
+                }
+#endif                
+                glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, m_staticIndexVboIds[j]);
                 Piper::instance()->glDrawElements(GL_TRIANGLES, tot, GL_UNSIGNED_SHORT, (GLvoid*)idxbuf->getOffset());
+
 				glDisableClientState(GL_VERTEX_ARRAY);
 				glDisableClientState(GL_NORMAL_ARRAY);
 				glDisableClientState(GL_COLOR_ARRAY);
 				glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+                if (useGPUSkinning) {
+                    glDisableClientState(GL_BONEINDEX_ARRAY);
+                    glDisableClientState(GL_BONEWEIGHT_ARRAY);
+                }
 				glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
 				glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, 0);
 			}

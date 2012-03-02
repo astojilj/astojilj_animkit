@@ -18,7 +18,7 @@
 #endif
 
 // This ties in with the shader attribute to link to openGL, see pszVertShader.
-const char* pszAttribs[] = { "a_Vertex", "a_MultiTexCoord0", "a_Normal", "a_Color" };
+const char* pszAttribs[] = { "a_Vertex", "a_MultiTexCoord0", "a_Normal", "a_Color", "a_BoneIndices", "a_BoneWeights" };
 
 ShaderData::ShaderData( const char *vertShaderFilename, const char *fragShaderFilename )
 {
@@ -37,9 +37,7 @@ ShaderData::ShaderData( const char *vertShaderFilename, const char *fragShaderFi
 	
 	// First gets the location of that variable in the shader using its name
 	PMVMatrixHandle = glGetUniformLocation(uiProgramObject, "u_ModelViewProjectionMatrix");
-	MVMatrixHandle = glGetUniformLocation(uiProgramObject, "u_ModelViewMatrix");
 	TIMMatrixHandle = glGetUniformLocation(uiProgramObject, "u_TrasposeInverseModelMatrix");
-	ModelMatrixHandle = glGetUniformLocation(uiProgramObject, "u_ModelMatrix");
 	ViewMatrixHandle = glGetUniformLocation(uiProgramObject, "u_ViewMatrix");
 	
 	EyePositionHandle = glGetUniformLocation(uiProgramObject, "myEye");
@@ -55,8 +53,9 @@ ShaderData::ShaderData( const char *vertShaderFilename, const char *fragShaderFi
 	ColorHandle = glGetUniformLocation(uiProgramObject, "u_Color");		
 	TextureHandle = glGetUniformLocation(uiProgramObject, "s_texture");			
 	NormalMapHandle = glGetUniformLocation(uiProgramObject, "s_normalmap");	
-	
-	NoiseOffsetHandle= glGetUniformLocation(uiProgramObject, "u_offset");
+    
+    BoneCountHandle = glGetUniformLocation(uiProgramObject, "u_BoneCount");
+    BoneMatricesHandle = glGetUniformLocation(uiProgramObject, "u_BoneMatrices[0]");
 }
 
 ShaderData::~ShaderData()

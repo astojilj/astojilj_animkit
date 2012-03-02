@@ -39,9 +39,7 @@ public:
 
 	// Handles for the uniform variables.
 	int PMVMatrixHandle;
-	int MVMatrixHandle;
 	int TIMMatrixHandle;	
-	int ModelMatrixHandle;
 	int ViewMatrixHandle;
 	
 	int EyePositionHandle;
@@ -56,10 +54,10 @@ public:
 	
 	int ColorHandle;	
 	int TextureHandle;
-	int NormalMapHandle;	
-	
-	int NoiseOffsetHandle;	
-
+	int NormalMapHandle;
+    
+    int BoneCountHandle;
+    int BoneMatricesHandle;	
 };
 
 

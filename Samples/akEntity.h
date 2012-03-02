@@ -53,12 +53,12 @@ private:
 	
 	btAlignedObjectArray<akMatrix4>  m_matrixPalette;
 	btAlignedObjectArray<akDualQuat> m_dualquatPalette;
-	bool                             m_useDualQuatSkinning;
+	bool                             m_useDualQuatSkinning, m_useGPUSkinning;
 	bool                             m_posAnimated, m_morphAnimated;
 	
 	bool m_useVbo;
 	
-	utArray<GLuint> m_posnoVertexVboIds, m_staticVertexVboIds, m_staticIndexVboIds;
+	utArray<GLuint> m_posnoVertexVboIds, m_staticVertexVboIds, m_staticIndexVboIds, m_boneIndexVboIds, m_boneWeightVboIds;
 	utArray<GLuint> m_textures;
 
 public:
@@ -159,7 +159,7 @@ public:
 	{
 		return m_dualquatPalette;
 	}
-	
+    
 	BT_DECLARE_ALIGNED_ALLOCATOR();
 };
 

@@ -62,8 +62,6 @@ void Gles20Farm::init(void)
 	square = getEntity("Plane.003");
 	if(square)
 		square->setPositionAnimated(true);
-    
-    
 }
 
 static unsigned int elapsedMS()
@@ -121,7 +119,7 @@ void Gles20Farm::renderFrame()
 void Gles20Farm::draw()
 {
     Piper::instance()->initFrame();
-    glClearColor(0.7f, 1.0f, 1.0f, 1.0f);
+    glClearColor(0.56f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // Set the OpenGL projection matrix
     MATRIX	MyPerspMatrix;

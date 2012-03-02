@@ -339,6 +339,16 @@ public:
 	{
 		return *m_material;
 	}
+    
+    UT_INLINE float* getBoneWeightsDataPtr(void)
+	{
+		return (float*)&m_boneWeights[0];
+	}
+    
+	UT_INLINE UTuint8* getBoneIndexDataPtr(void)
+	{
+		return &m_boneIndices[0];
+	} 
 };
 
 /// A triangle mesh

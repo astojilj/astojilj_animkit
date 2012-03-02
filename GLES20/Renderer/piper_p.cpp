@@ -53,6 +53,7 @@ void MatrixStack::pop()
 }
 
 Piper *Piper::_instance = 0;
+PiperGL20 *instance20 = 0;
 
 Piper *Piper::instance() 
 {
@@ -63,13 +64,15 @@ void Piper::initInstance(bool fixedPipeline)
 {
 	delete _instance;
 	_instance = 0;
+    instance20 = 0;
 #ifndef QT_BUILD //! Support only for OpenGL ES 2.0 in MeeGo for start
 	if (fixedPipeline) {
 		_instance = new PiperGL11;
 	} else
 #endif
 	{
-		_instance = new PiperGL20;
+		instance20 = new PiperGL20;
+        _instance = instance20;
 	}
 }
 

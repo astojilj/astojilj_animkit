@@ -38,6 +38,11 @@ extern int __OPENGLES_VERSION;
 #define GL_TEXTURE_COORD_ARRAY	1
 #define GL_NORMAL_ARRAY	2
 #define GL_COLOR_ARRAY 3
+#define GL_BONEINDEX_ARRAY 4
+#define GL_BONEWEIGHT_ARRAY 5
+#define GL_TANGENT_ARRAY 6
+#define GL_BINORMAL_ARRAY 7
+
 #define glEnableClientState(a) glEnableVertexAttribArray(a)
 #define glDisableClientState(a) glDisableVertexAttribArray(a)
 #define glVertexPointer(size,type,stride,pointer) glVertexAttribPointer(GL_VERTEX_ARRAY,size,type,GL_FALSE,stride,pointer)

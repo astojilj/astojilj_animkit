@@ -22,8 +22,8 @@
 		A18FCE2614D49AAD008675CA /* columbine.blend in Resources */ = {isa = PBXBuildFile; fileRef = A18FCE2514D49AAD008675CA /* columbine.blend */; };
 		A191B59C14D56B97007C0F57 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A191B59B14D56B97007C0F57 /* Timer.cpp */; };
 		A1BD7BC914A3E647002F2D43 /* gles20farm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7BC514A3E647002F2D43 /* gles20farm.cpp */; };
-		A1BD7BD114A3E6A4002F2D43 /* Toon.frag in Resources */ = {isa = PBXBuildFile; fileRef = A1BD7BCF14A3E694002F2D43 /* Toon.frag */; };
-		A1BD7BDE14A3E6F6002F2D43 /* Toon.vert in Resources */ = {isa = PBXBuildFile; fileRef = A1BD7BDC14A3E6EF002F2D43 /* Toon.vert */; };
+		A1BD7BD114A3E6A4002F2D43 /* SkinnedCharacter.frag in Resources */ = {isa = PBXBuildFile; fileRef = A1BD7BCF14A3E694002F2D43 /* SkinnedCharacter.frag */; };
+		A1BD7BDE14A3E6F6002F2D43 /* SkinnedCharacter.vert in Resources */ = {isa = PBXBuildFile; fileRef = A1BD7BDC14A3E6EF002F2D43 /* SkinnedCharacter.vert */; };
 		A1BD7BE514A3E758002F2D43 /* akDemoBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7BDF14A3E758002F2D43 /* akDemoBase.cpp */; };
 		A1BD7BE614A3E758002F2D43 /* akEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7BE114A3E758002F2D43 /* akEntity.cpp */; };
 		A1BD7BF314A3E776002F2D43 /* akAnimationLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7BE914A3E776002F2D43 /* akAnimationLoader.cpp */; };
@@ -116,8 +116,8 @@
 		A191B59B14D56B97007C0F57 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Timer.cpp; path = ../../../GLES20/Utility/Timer.cpp; sourceTree = SOURCE_ROOT; };
 		A1BD7BC514A3E647002F2D43 /* gles20farm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gles20farm.cpp; path = ../gles20farm.cpp; sourceTree = SOURCE_ROOT; };
 		A1BD7BC614A3E647002F2D43 /* gles20farm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gles20farm.h; path = ../gles20farm.h; sourceTree = SOURCE_ROOT; };
-		A1BD7BCF14A3E694002F2D43 /* Toon.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Toon.frag; path = ../Toon.frag; sourceTree = SOURCE_ROOT; };
-		A1BD7BDC14A3E6EF002F2D43 /* Toon.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Toon.vert; path = ../Toon.vert; sourceTree = SOURCE_ROOT; };
+		A1BD7BCF14A3E694002F2D43 /* SkinnedCharacter.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = SkinnedCharacter.frag; path = ../SkinnedCharacter.frag; sourceTree = SOURCE_ROOT; };
+		A1BD7BDC14A3E6EF002F2D43 /* SkinnedCharacter.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = SkinnedCharacter.vert; path = ../SkinnedCharacter.vert; sourceTree = SOURCE_ROOT; };
 		A1BD7BDF14A3E758002F2D43 /* akDemoBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = akDemoBase.cpp; path = ../../akDemoBase.cpp; sourceTree = SOURCE_ROOT; };
 		A1BD7BE014A3E758002F2D43 /* akDemoBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = akDemoBase.h; path = ../../akDemoBase.h; sourceTree = SOURCE_ROOT; };
 		A1BD7BE114A3E758002F2D43 /* akEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = akEntity.cpp; path = ../../akEntity.cpp; sourceTree = SOURCE_ROOT; };
@@ -360,8 +360,8 @@
 				A1BD7BE014A3E758002F2D43 /* akDemoBase.h */,
 				A1BD7BE114A3E758002F2D43 /* akEntity.cpp */,
 				A1BD7BE214A3E758002F2D43 /* akEntity.h */,
-				A1BD7BDC14A3E6EF002F2D43 /* Toon.vert */,
-				A1BD7BCF14A3E694002F2D43 /* Toon.frag */,
+				A1BD7BDC14A3E6EF002F2D43 /* SkinnedCharacter.vert */,
+				A1BD7BCF14A3E694002F2D43 /* SkinnedCharacter.frag */,
 				A1BD7BC514A3E647002F2D43 /* gles20farm.cpp */,
 				A1BD7BC614A3E647002F2D43 /* gles20farm.h */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -844,8 +844,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2514C27B10084DCA00A42282 /* Shader.fsh in Resources */,
-				A1BD7BD114A3E6A4002F2D43 /* Toon.frag in Resources */,
-				A1BD7BDE14A3E6F6002F2D43 /* Toon.vert in Resources */,
+				A1BD7BD114A3E6A4002F2D43 /* SkinnedCharacter.frag in Resources */,
+				A1BD7BDE14A3E6F6002F2D43 /* SkinnedCharacter.vert in Resources */,
 				2514C27C10084DCA00A42282 /* Shader.vsh in Resources */,
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				28EC4C5A11D54ECE0027AA9F /* AppAnimKitGlViewController.xib in Resources */,
