@@ -391,6 +391,7 @@ void akEntity::draw(bool drawNormal, bool drawColor, bool textured, bool useVbo,
                             matrixData[matrixIndex] = m_matrixPalette[matrixIndex];
                         }
                         glUniformMatrix4fv(PiperGL20::instance()->currentShader()->BoneMatricesHandle, m_matrixPalette.size(), GL_FALSE, (float*)matrixData);
+                        delete [] matrixData;
                         
 				        glBindBufferARB(GL_ARRAY_BUFFER_ARB, m_boneWeightVboIds[j]);
                         glEnableVertexAttribArray(GL_BONEWEIGHT_ARRAY);
