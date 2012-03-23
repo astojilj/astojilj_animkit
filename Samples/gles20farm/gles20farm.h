@@ -20,6 +20,20 @@ public:
 	virtual void init();
     void renderFrame();
     void draw();
+    
+private:
+    void setupDrawToTexture();
+    void drawTextureToScreen();
+    bool createFramebuffer();
+    bool createOffscreenTexture();
+    void cleanup();
+
+private:
+    // for offscreen renderring
+    GLuint m_framebuffer;
+    GLint m_screenFramebuffer;
+    GLuint m_depthRenderBuffer;
+    GLuint m_renderTexture;
 };
 
 #endif // GLES20FARM_H

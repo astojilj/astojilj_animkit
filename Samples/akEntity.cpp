@@ -172,7 +172,7 @@ void akEntity::init(bool useVbo, akDemoBase* demo)
 	}
 	
 	// Activate the first action of each object
-	akAnimationPlayer* player = m_animatedObject->getAnimationPlayers()->getAnimationPlayer(0);
+	akAnimationPlayer* player = m_animatedObject ? m_animatedObject->getAnimationPlayers()->getAnimationPlayer(0) : 0;
 	if(player)
 	{
 		player->setEnabled(true);

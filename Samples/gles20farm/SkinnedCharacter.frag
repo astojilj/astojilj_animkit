@@ -40,17 +40,15 @@ uniform vec4 u_Color;
 void main (void)
 {
     vec2 uv = v_TexCoord;
-    float Edge = 0.5;
+//    float Edge = 0.5;
     float Phong = 0.8;
     
 	vec3 n = normalize(v_Normal);
-    float edge = dot(vec3(0,0,1),n);
+//    float edge = dot(vec3(0,0,1),n);
     
     vec4 texture;
-    // supporting texture, variant color or uniform color
-    if (u_Color.a < USE_UNIFORM_COLOR) {
-        texture = u_Color;
-    } else if (u_Color.a < USE_VARIANT_COLOR) {
+    // supporting texture or variant color
+    if (u_Color.a < USE_VARIANT_COLOR) {
         texture = v_Color;
     } else {
         texture = texture2D(s_texture, uv);
@@ -60,14 +58,13 @@ void main (void)
     
     if (u_Color.a == NO_OUTLINE) {
             gl_FragColor = texture;
-    } else if (abs(edge) < Edge) {
-        gl_FragColor = texture * 0.4;
+//    } else if (abs(edge) < Edge) {
+//        gl_FragColor = texture * 0.4;
     } else {
         // take (0,1,1) as light vector
 	    float f = dot(vec3(0,0.707,0.707),n);
         if (f < Phong) {
-            vec4 color1 = texture;
-            gl_FragColor = color1;
+            gl_FragColor = texture;
         } else if (u_Color.a < USE_UNIFORM_COLOR){
             gl_FragColor = texture;
         }
@@ -76,5 +73,6 @@ void main (void)
             gl_FragColor = PhongColor * texture;
         }
     }
+    gl_FragColor.a = u_Color.a;
 }
 

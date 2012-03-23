@@ -19,6 +19,10 @@
 		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
+		A15C5777151362E00082E13B /* EdgeDetection.frag in Sources */ = {isa = PBXBuildFile; fileRef = A15C5775151362E00082E13B /* EdgeDetection.frag */; };
+		A15C5778151362E00082E13B /* EdgeDetection.vert in Sources */ = {isa = PBXBuildFile; fileRef = A15C5776151362E00082E13B /* EdgeDetection.vert */; };
+		A15C577A1513B71E0082E13B /* EdgeDetection.frag in Resources */ = {isa = PBXBuildFile; fileRef = A15C5775151362E00082E13B /* EdgeDetection.frag */; };
+		A15C577B1513B7230082E13B /* EdgeDetection.vert in Resources */ = {isa = PBXBuildFile; fileRef = A15C5776151362E00082E13B /* EdgeDetection.vert */; };
 		A18FCE2614D49AAD008675CA /* columbine.blend in Resources */ = {isa = PBXBuildFile; fileRef = A18FCE2514D49AAD008675CA /* columbine.blend */; };
 		A191B59C14D56B97007C0F57 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A191B59B14D56B97007C0F57 /* Timer.cpp */; };
 		A1BD7BC914A3E647002F2D43 /* gles20farm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7BC514A3E647002F2D43 /* gles20farm.cpp */; };
@@ -112,6 +116,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* gles20farm_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gles20farm_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* gles20farm-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "gles20farm-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A15C5775151362E00082E13B /* EdgeDetection.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = EdgeDetection.frag; path = ../EdgeDetection.frag; sourceTree = "<group>"; };
+		A15C5776151362E00082E13B /* EdgeDetection.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = EdgeDetection.vert; path = ../EdgeDetection.vert; sourceTree = "<group>"; };
 		A18FCE2514D49AAD008675CA /* columbine.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = columbine.blend; path = ../columbine.blend; sourceTree = SOURCE_ROOT; };
 		A191B59B14D56B97007C0F57 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Timer.cpp; path = ../../../GLES20/Utility/Timer.cpp; sourceTree = SOURCE_ROOT; };
 		A1BD7BC514A3E647002F2D43 /* gles20farm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gles20farm.cpp; path = ../gles20farm.cpp; sourceTree = SOURCE_ROOT; };
@@ -341,6 +347,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A15C5775151362E00082E13B /* EdgeDetection.frag */,
+				A15C5776151362E00082E13B /* EdgeDetection.vert */,
 				A18FCE2514D49AAD008675CA /* columbine.blend */,
 				A1F699B714D360A9004E55C4 /* akAnimatedObject.cpp */,
 				A1F699B814D360A9004E55C4 /* akAnimatedObject.h */,
@@ -843,6 +851,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A15C577B1513B7230082E13B /* EdgeDetection.vert in Resources */,
+				A15C577A1513B71E0082E13B /* EdgeDetection.frag in Resources */,
 				2514C27B10084DCA00A42282 /* Shader.fsh in Resources */,
 				A1BD7BD114A3E6A4002F2D43 /* SkinnedCharacter.frag in Resources */,
 				A1BD7BDE14A3E6F6002F2D43 /* SkinnedCharacter.vert in Resources */,
@@ -932,6 +942,8 @@
 				A1F699BB14D360A9004E55C4 /* akAnimatedObject.cpp in Sources */,
 				A1F699BC14D360A9004E55C4 /* akAnimationEngine.cpp in Sources */,
 				A191B59C14D56B97007C0F57 /* Timer.cpp in Sources */,
+				A15C5777151362E00082E13B /* EdgeDetection.frag in Sources */,
+				A15C5778151362E00082E13B /* EdgeDetection.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
