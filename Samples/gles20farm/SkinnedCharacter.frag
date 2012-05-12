@@ -40,17 +40,14 @@ uniform vec4 u_Color;
 void main (void)
 {
     vec2 uv = v_TexCoord;
-    float Edge = 0.5;
-    float Phong = 0.8;
-    
-	vec3 n = normalize(v_Normal);
-    float edge = dot(vec3(0,0,1),n);
+    float Edge = 0.4;
+    float Phong = 0.35;
+    float Phong1 = 0.75;    
+
     
     vec4 texture;
-    // supporting texture, variant color or uniform color
-    if (u_Color.a < USE_UNIFORM_COLOR) {
-        texture = u_Color;
-    } else if (u_Color.a < USE_VARIANT_COLOR) {
+    // supporting texture or variant color
+    if (u_Color.a < USE_VARIANT_COLOR) {
         texture = v_Color;
     } else {
         texture = texture2D(s_texture, uv);
@@ -60,21 +57,30 @@ void main (void)
     
     if (u_Color.a == NO_OUTLINE) {
             gl_FragColor = texture;
-    } else if (abs(edge) < Edge) {
-        gl_FragColor = texture * 0.4;
-    } else {
-        // take (0,1,1) as light vector
-	    float f = dot(vec3(0,0.707,0.707),n);
-        if (f < Phong) {
-            vec4 color1 = texture;
-            gl_FragColor = color1;
-        } else if (u_Color.a < USE_UNIFORM_COLOR){
+    } else { 
+        vec3 n = normalize(v_Normal);
+        float edge = dot(vec3(0,0,1),n);
+        if (abs(edge) < Edge) {
+            gl_FragColor = texture * 0.4;
+        } else {
             gl_FragColor = texture;
-        }
-        else {
-            vec4 PhongColor = vec4(1.25, 1.25, 1.25, 1.0);
-            gl_FragColor = PhongColor * texture;
+/*            // take (0,1,1) as light vector
+            float f = dot(vec3(-0.4923,0.8616,0.323),n);
+            if (f < Phong) {
+                gl_FragColor = texture;
+            } else if (u_Color.a < USE_UNIFORM_COLOR){
+                gl_FragColor = texture;
+            }
+            else if (f < Phong1) {
+                vec4 PhongColor = vec4(1.07, 1.07, 1.07, 1.0);
+                gl_FragColor = PhongColor * texture;
+            } else {
+                vec4 PhongColor1 = vec4(1.25, 1.25, 1.25, 1.0);
+                gl_FragColor = PhongColor1 * texture;
+            }
+ */
         }
     }
+    gl_FragColor.a = u_Color.a;
 }
 

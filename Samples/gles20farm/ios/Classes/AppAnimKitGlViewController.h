@@ -21,7 +21,6 @@
 @interface AppAnimKitGlViewController : UIViewController
 {
     EAGLContext *context;
-    GLuint program;
     
     BOOL animating;
     BOOL displayLinkSupported;

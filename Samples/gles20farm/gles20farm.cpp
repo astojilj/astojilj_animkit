@@ -20,48 +20,85 @@
 #include "Timer.h"
 #include "stdio.h"
 #include "piper.h"
-float DisplayHeight = 640;
-float DisplayWidth = 480;
+#include "ResourceFile.h"
+#include "Shader.h"
+float DisplayHeight = 480;
+float DisplayWidth = 320;
 #include "Pathes.h"
 #include <sstream>
+#include "tgaTexureLoader.h"
 
+class QuadShader
+{
+public:    
+    QuadShader(const char *vertShaderFilename, const char *fragShaderFilename)
+    {
+        char buffer[2048];
+        GetResourcePathASCII(buffer, 2048);
+        CPVRTResourceFile::SetReadPath(buffer);
+        
+        /* Gets the Data Path */	
+        if(ShaderLoadFromFile("blank",fragShaderFilename, GL_FRAGMENT_SHADER, 0, &fragmentShader) == 0)
+            printf("Loading the fragment shader fails:%s", fragShaderFilename);
+        if(ShaderLoadFromFile("blank", vertShaderFilename, GL_VERTEX_SHADER, 0, &vertexShader) == 0)
+            printf("Loading the vertex shader fails:%s", vertShaderFilename);
+        
+        const char *attribs[] = {"inVertex", "inTexCoord"};
+        CreateProgram(&program, vertexShader, fragmentShader, attribs, sizeof(attribs)/sizeof(attribs[0]));
+    	uniformColorBufferTexture = glGetUniformLocation(program, "sColorBufferTexture"); 
+    }
+    
+    QuadShader()
+    {
+    	glDeleteProgram(program);
+        glDeleteShader(fragmentShader);
+        glDeleteShader(vertexShader);
+    }
+    
+public: // used directly in Gles20Farm only, anyway
+    GLuint fragmentShader;
+    GLuint vertexShader;
+	GLuint program;
+    GLint uniformPixelSize;
+    GLint uniformColorBufferTexture;    
+};
+
+QuadShader *quadShader = 0;
 
 Gles20Farm::Gles20Farm() 
-: akDemoBase()
+: akDemoBase(), backgroundTexture(0)
 {
-
+    
 }
 
 Gles20Farm::~Gles20Farm()
 {
-	
+    cleanup();
 }
 
 void Gles20Farm::init(void)
 {
 	akBLoader loader(this, m_animengine);
+    char backgroundTextureFile[512];
 #ifdef QT_BUILD
     loader.loadFile("/usr/share/gles20farm/columbine.blend", false, true);
+    sprintf(backgroundTextureFile,"/usr/share/gles20farm/%s","background.tga");
 #else
     #if defined __APPLE__ && defined OPENGL_ES_2_0
 		char absolutePath[512], bundleDir[512];
 		GetResourcePathASCII(bundleDir,512);
 		sprintf(absolutePath,"%s/%s",bundleDir,"columbine.blend");
 		loader.loadFile(absolutePath, false, true);	
+        sprintf(backgroundTextureFile,"%s/%s",bundleDir,"background.tga");
     #else
 		loader.loadFile("columbine.blend", false, true);
+        sprintf(backgroundTextureFile,"%s","background.tga");
     #endif
 #endif
-    // Set some animation data the loader cannot detect
-	akEntity* square = getEntity("Plane.001");
-	if(square)
-		square->setPositionAnimated(true);
-	square = getEntity("Plane.002");
-	if(square)
-		square->setPositionAnimated(true);
-	square = getEntity("Plane.003");
-	if(square)
-		square->setPositionAnimated(true);
+    glEnable(GL_DEPTH_TEST);
+    backgroundTexture = tgaTexureLoader::loadRawTargaTexture(backgroundTextureFile);
+
+    quadShader = new QuadShader("/Quad.vert", "/Quad.frag");
 }
 
 static unsigned int elapsedMS()
@@ -118,9 +155,21 @@ void Gles20Farm::renderFrame()
 
 void Gles20Farm::draw()
 {
-    Piper::instance()->initFrame();
+    
     glClearColor(0.56f, 1.0f, 1.0f, 1.0f);
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glDisable(GL_DEPTH_TEST);
+    drawBackground();
+
+
+    //Enable depth testing and culling.
+    glEnable(GL_DEPTH_TEST);
+
+    Piper::instance()->initFrame();
+
+    
+
     // Set the OpenGL projection matrix
     MATRIX	MyPerspMatrix;
 	
@@ -138,10 +187,52 @@ void Gles20Farm::draw()
 	// objects
 	bool shaded = m_shaded && !m_wireframe;
 	unsigned int i;
-	for( i=0; i<m_objects.size(); i++)
+	
+    utList<akEntity*> transparents;
+    
+    for( i=0; i<m_objects.size(); i++)
 	{
-		m_objects.at(i)->draw(m_drawNormals, m_drawColor, m_textured, m_useVbo, shaded, m_drawSkeleton);
+        akEntity *entity = m_objects.at(i);
+        if (entity->isMeshDeformed() || !entity->getName().str().compare("Plane"))
+            entity->draw(m_drawNormals, m_drawColor, m_textured, m_useVbo, shaded, m_drawSkeleton);
+        else
+            transparents.push_back(entity);
+/*        if (!entity->getName().str().compare("columbine")) {
+            akTransformState initial = entity->getTransformState();
+            
+            for( int j = 1; j < 16; j++) {
+                akTransformState state;
+                akVector3 forwardVector;
+                if (!(j%6)) {
+                    state = initial;
+                    forwardVector = rotate(normalize(state.rot), akVector3(0, 1.5f * j/6, 0));
+                } else {
+                    state = entity->getTransformState();                    
+                    forwardVector = rotate(normalize(state.rot), akVector3(-0.7f, 0, 0));
+                }
+                
+                state.loc = state.loc + forwardVector;
+                //state.rot = state.rot * akQuat::rotationZ(-angle*0.1f);
+                entity->setTransformState(state);
+                entity->draw(m_drawNormals, m_drawColor, m_textured, m_useVbo, shaded, m_drawSkeleton);
+            }
+            
+            entity->setTransformState(initial);
+            
+        }
+*/ 
 	}
+    
+    if (transparents.size()) {
+        glEnable(GL_BLEND); 
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        for (int i = 0; i < transparents.size(); i++) {
+            akEntity *entity = transparents.at(i);
+            entity->draw(m_drawNormals, m_drawColor, m_textured, m_useVbo, shaded, m_drawSkeleton);        
+        }
+        glDisable(GL_BLEND);
+    }
+    
     
 	// Stats
 	std::stringstream UIString;
@@ -229,3 +320,51 @@ void Gles20Farm::draw()
 	}
 	drawString(10, m_windowy-100, str.c_str());
 }
+
+void Gles20Farm::drawBackground()
+{
+    if (backgroundTexture) {
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, backgroundTexture);
+        drawTextureToScreen();
+    }
+}
+
+void Gles20Farm::drawTextureToScreen()
+{
+	glViewport(0, 0, DisplayWidth, DisplayHeight);
+    
+    
+	glUseProgram(quadShader->program);
+	glUniform2f(quadShader->uniformPixelSize,1.0f/(float)DisplayWidth,1.0f/(float)DisplayHeight);
+    
+	glEnableVertexAttribArray(GL_VERTEX_ARRAY);
+	glEnableVertexAttribArray(GL_TEXTURE_COORD_ARRAY);
+
+    //Sets vertex data for the quad.
+	const float afVertexData[] = {-1,-1, 0, 1,-1, 0,-1, 1, 0, 1, 1, 0};
+	glVertexAttribPointer(GL_VERTEX_ARRAY, 3, GL_FLOAT, GL_FALSE, 0, afVertexData);
+    
+	//Sets texture coordinate data for the quad
+	const float afTexCoordData[] = { 0, 0,  1, 0,  0, 1,  1, 1 };
+	glVertexAttribPointer(GL_TEXTURE_COORD_ARRAY, 2, GL_FLOAT, GL_FALSE, 0, afTexCoordData);
+    
+	// Draw the quad
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    
+	// Disable the vertex and texture attribute arrays
+	glDisableVertexAttribArray(GL_TEXTURE_COORD_ARRAY);
+	glDisableVertexAttribArray(GL_VERTEX_ARRAY);
+}
+
+void Gles20Farm::cleanup()
+{
+    delete quadShader;
+    quadShader = 0;
+    if (backgroundTexture) {
+        glDeleteTextures(1, &backgroundTexture);
+        backgroundTexture = 0;
+    }
+}
+
+

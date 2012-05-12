@@ -16,9 +16,13 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28EC4C5911D54ECE0027AA9F /* AppAnimKitGlViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28EC4C5711D54ECE0027AA9F /* AppAnimKitGlViewController.mm */; };
 		28EC4C5A11D54ECE0027AA9F /* AppAnimKitGlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EC4C5811D54ECE0027AA9F /* AppAnimKitGlViewController.xib */; };
-		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
+		A1511473151DD0CA003FDD3B /* background.tga in Resources */ = {isa = PBXBuildFile; fileRef = A1511472151DD0CA003FDD3B /* background.tga */; };
+		A15C5777151362E00082E13B /* Quad.frag in Sources */ = {isa = PBXBuildFile; fileRef = A15C5775151362E00082E13B /* Quad.frag */; };
+		A15C5778151362E00082E13B /* Quad.vert in Sources */ = {isa = PBXBuildFile; fileRef = A15C5776151362E00082E13B /* Quad.vert */; };
+		A15C577A1513B71E0082E13B /* Quad.frag in Resources */ = {isa = PBXBuildFile; fileRef = A15C5775151362E00082E13B /* Quad.frag */; };
+		A15C577B1513B7230082E13B /* Quad.vert in Resources */ = {isa = PBXBuildFile; fileRef = A15C5776151362E00082E13B /* Quad.vert */; };
 		A18FCE2614D49AAD008675CA /* columbine.blend in Resources */ = {isa = PBXBuildFile; fileRef = A18FCE2514D49AAD008675CA /* columbine.blend */; };
 		A191B59C14D56B97007C0F57 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A191B59B14D56B97007C0F57 /* Timer.cpp */; };
 		A1BD7BC914A3E647002F2D43 /* gles20farm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7BC514A3E647002F2D43 /* gles20farm.cpp */; };
@@ -89,6 +93,9 @@
 		A1BD7D3B14A3E7F6002F2D43 /* uncompr.c in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7CFE14A3E7F6002F2D43 /* uncompr.c */; };
 		A1BD7D3D14A3E7F6002F2D43 /* zutil.c in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7D0314A3E7F6002F2D43 /* zutil.c */; };
 		A1BD7ECC14A5CC21002F2D43 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BD7ECB14A5CC21002F2D43 /* CoreAudio.framework */; };
+		A1CDD1FD152F98FC004FB80A /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1CDD1FC152F98FC004FB80A /* GLKit.framework */; };
+		A1CDD200152F9B04004FB80A /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CDD1FF152F9B04004FB80A /* EAGLView.m */; };
+		A1CDD203152F9C97004FB80A /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CDD202152F9C97004FB80A /* MainWindow-iPad.xib */; };
 		A1F699BB14D360A9004E55C4 /* akAnimatedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1F699B714D360A9004E55C4 /* akAnimatedObject.cpp */; };
 		A1F699BC14D360A9004E55C4 /* akAnimationEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1F699B914D360A9004E55C4 /* akAnimationEngine.cpp */; };
 /* End PBXBuildFile section */
@@ -105,13 +112,14 @@
 		28EC4C5611D54ECE0027AA9F /* AppAnimKitGlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppAnimKitGlViewController.h; sourceTree = "<group>"; };
 		28EC4C5711D54ECE0027AA9F /* AppAnimKitGlViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppAnimKitGlViewController.mm; sourceTree = "<group>"; };
 		28EC4C5811D54ECE0027AA9F /* AppAnimKitGlViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AppAnimKitGlViewController.xib; path = ../AppAnimKitGlViewController.xib; sourceTree = "<group>"; };
-		28FD14FC0DC6FC130079059D /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
-		28FD14FD0DC6FC130079059D /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
 		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* gles20farm_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gles20farm_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* gles20farm-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "gles20farm-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A1511472151DD0CA003FDD3B /* background.tga */ = {isa = PBXFileReference; lastKnownFileType = file; name = background.tga; path = ../background.tga; sourceTree = "<group>"; };
+		A15C5775151362E00082E13B /* Quad.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Quad.frag; path = ../Quad.frag; sourceTree = "<group>"; };
+		A15C5776151362E00082E13B /* Quad.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Quad.vert; path = ../Quad.vert; sourceTree = "<group>"; };
 		A18FCE2514D49AAD008675CA /* columbine.blend */ = {isa = PBXFileReference; lastKnownFileType = file; name = columbine.blend; path = ../columbine.blend; sourceTree = SOURCE_ROOT; };
 		A191B59B14D56B97007C0F57 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Timer.cpp; path = ../../../GLES20/Utility/Timer.cpp; sourceTree = SOURCE_ROOT; };
 		A1BD7BC514A3E647002F2D43 /* gles20farm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gles20farm.cpp; path = ../gles20farm.cpp; sourceTree = SOURCE_ROOT; };
@@ -285,6 +293,11 @@
 		A1BD7CFE14A3E7F6002F2D43 /* uncompr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = uncompr.c; path = ../../../Dependencies/ZLib/uncompr.c; sourceTree = SOURCE_ROOT; };
 		A1BD7D0314A3E7F6002F2D43 /* zutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zutil.c; path = ../../../Dependencies/ZLib/zutil.c; sourceTree = SOURCE_ROOT; };
 		A1BD7ECB14A5CC21002F2D43 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		A1CDD1FC152F98FC004FB80A /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		A1CDD1FE152F9B04004FB80A /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
+		A1CDD1FF152F9B04004FB80A /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
+		A1CDD202152F9C97004FB80A /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		A1F12ABB151E42FF0014E675 /* tgaTexureLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tgaTexureLoader.h; path = ../tgaTexureLoader.h; sourceTree = "<group>"; };
 		A1F699B714D360A9004E55C4 /* akAnimatedObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = akAnimatedObject.cpp; path = ../../../Source/akAnimatedObject.cpp; sourceTree = SOURCE_ROOT; };
 		A1F699B814D360A9004E55C4 /* akAnimatedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = akAnimatedObject.h; path = ../../../Source/akAnimatedObject.h; sourceTree = SOURCE_ROOT; };
 		A1F699B914D360A9004E55C4 /* akAnimationEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = akAnimationEngine.cpp; path = ../../../Source/akAnimationEngine.cpp; sourceTree = SOURCE_ROOT; };
@@ -301,6 +314,7 @@
 				28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */,
 				28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */,
 				A1BD7ECC14A5CC21002F2D43 /* CoreAudio.framework in Frameworks */,
+				A1CDD1FD152F98FC004FB80A /* GLKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,8 +324,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				28FD14FC0DC6FC130079059D /* EAGLView.h */,
-				28FD14FD0DC6FC130079059D /* EAGLView.m */,
+				A1CDD1FE152F9B04004FB80A /* EAGLView.h */,
+				A1CDD1FF152F9B04004FB80A /* EAGLView.m */,
 				1D3623240D0F684500981E51 /* AppAnimKitGlAppDelegate.h */,
 				1D3623250D0F684500981E51 /* AppAnimKitGlAppDelegate.m */,
 				28EC4C5611D54ECE0027AA9F /* AppAnimKitGlViewController.h */,
@@ -341,6 +355,9 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A1511472151DD0CA003FDD3B /* background.tga */,
+				A15C5775151362E00082E13B /* Quad.frag */,
+				A15C5776151362E00082E13B /* Quad.vert */,
 				A18FCE2514D49AAD008675CA /* columbine.blend */,
 				A1F699B714D360A9004E55C4 /* akAnimatedObject.cpp */,
 				A1F699B814D360A9004E55C4 /* akAnimatedObject.h */,
@@ -363,11 +380,13 @@
 				A1BD7BDC14A3E6EF002F2D43 /* SkinnedCharacter.vert */,
 				A1BD7BCF14A3E694002F2D43 /* SkinnedCharacter.frag */,
 				A1BD7BC514A3E647002F2D43 /* gles20farm.cpp */,
+				A1F12ABB151E42FF0014E675 /* tgaTexureLoader.h */,
 				A1BD7BC614A3E647002F2D43 /* gles20farm.h */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				2514C27610084DB600A42282 /* Shaders */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				A1CDD201152F9C93004FB80A /* iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				A1BD7ECB14A5CC21002F2D43 /* CoreAudio.framework */,
@@ -396,6 +415,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1CDD1FC152F98FC004FB80A /* GLKit.framework */,
 				28FD15070DC6FC5B0079059D /* QuartzCore.framework */,
 				28FD14FF0DC6FC520079059D /* OpenGLES.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
@@ -791,6 +811,14 @@
 			path = ../../../Dependencies/ZLib;
 			sourceTree = SOURCE_ROOT;
 		};
+		A1CDD201152F9C93004FB80A /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				A1CDD202152F9C97004FB80A /* MainWindow-iPad.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -843,6 +871,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A15C577B1513B7230082E13B /* Quad.vert in Resources */,
+				A15C577A1513B71E0082E13B /* Quad.frag in Resources */,
 				2514C27B10084DCA00A42282 /* Shader.fsh in Resources */,
 				A1BD7BD114A3E6A4002F2D43 /* SkinnedCharacter.frag in Resources */,
 				A1BD7BDE14A3E6F6002F2D43 /* SkinnedCharacter.vert in Resources */,
@@ -851,6 +881,8 @@
 				28EC4C5A11D54ECE0027AA9F /* AppAnimKitGlViewController.xib in Resources */,
 				A1BD7C4F14A3E7A5002F2D43 /* readme.txt in Resources */,
 				A18FCE2614D49AAD008675CA /* columbine.blend in Resources */,
+				A1511473151DD0CA003FDD3B /* background.tga in Resources */,
+				A1CDD203152F9C97004FB80A /* MainWindow-iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -863,7 +895,6 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppAnimKitGlAppDelegate.m in Sources */,
-				28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */,
 				28EC4C5911D54ECE0027AA9F /* AppAnimKitGlViewController.mm in Sources */,
 				A1BD7BC914A3E647002F2D43 /* gles20farm.cpp in Sources */,
 				A1BD7BE514A3E758002F2D43 /* akDemoBase.cpp in Sources */,
@@ -932,6 +963,9 @@
 				A1F699BB14D360A9004E55C4 /* akAnimatedObject.cpp in Sources */,
 				A1F699BC14D360A9004E55C4 /* akAnimationEngine.cpp in Sources */,
 				A191B59C14D56B97007C0F57 /* Timer.cpp in Sources */,
+				A15C5777151362E00082E13B /* Quad.frag in Sources */,
+				A15C5778151362E00082E13B /* Quad.vert in Sources */,
+				A1CDD200152F9B04004FB80A /* EAGLView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -959,6 +993,7 @@
 				PRODUCT_NAME = gles20farm;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "179D3821-DE7E-4FDF-8041-714078290353";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "../../../Dependencies/vectormath ../../../GLES20/Include";
 			};
 			name = Debug;
@@ -975,6 +1010,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = gles20farm;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

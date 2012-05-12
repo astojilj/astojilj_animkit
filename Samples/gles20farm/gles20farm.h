@@ -20,6 +20,14 @@ public:
 	virtual void init();
     void renderFrame();
     void draw();
+    
+private:
+    void drawTextureToScreen();
+    void drawBackground();
+    void cleanup();
+    
+private:
+    GLuint backgroundTexture;
 };
 
 #endif // GLES20FARM_H
