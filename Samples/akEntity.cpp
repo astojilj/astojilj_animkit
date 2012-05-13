@@ -79,7 +79,7 @@ static void convertUint2Ushort(unsigned int *source, unsigned short *target, uns
 }
 
 #ifdef OPENGL_ES_2_0
-#define OPENGL_ES_2_0_GPU_SKINNING			
+    #define OPENGL_ES_2_0_GPU_SKINNING			
 #endif
 
 void akEntity::init(bool useVbo, akDemoBase* demo)
@@ -278,10 +278,14 @@ void akEntity::update(int dualQuat, int normalsMethod)
                     // if GPU skinning, no need to copy invertices -> outvertices and updateVBO
                     return;
             }
-#endif            
+            
+			m_mesh->deform((akGeometryDeformer::SkinningOption)dq, (akGeometryDeformer::NormalsOption)nm,
+						   pose, 0, 0);
+            
+#else            
 			m_mesh->deform((akGeometryDeformer::SkinningOption)dq, (akGeometryDeformer::NormalsOption)nm,
 						   pose, &m_matrixPalette, &m_dualquatPalette);
-			
+#endif			
 			updateVBO();
 		}
 	}

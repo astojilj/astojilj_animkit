@@ -35,7 +35,7 @@ uniform highp   mat4	u_ModelViewProjectionMatrix;
 uniform mediump mat4	u_TrasposeInverseModelMatrix;
 uniform mediump mat4	u_ViewMatrix;
 uniform mediump	int	    u_BoneCount;
-uniform highp   mat4    u_BoneMatrices[8];
+uniform highp   mat4    u_BoneMatrices[18];
 
 varying mediump vec2 v_TexCoord;
 varying vec3 v_Normal;

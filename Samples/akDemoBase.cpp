@@ -319,18 +319,6 @@ int akDemoBase::getFps(void)
 	return m_lastfps;
 }
 
-#ifdef OPENGL_ES_2_0
-/*static void MatrixConvert(const akMatrix4 &m, MATRIX &out)
-{
-    void *p = &(out.f);
-    for (int i = 0; i < 4; i++) {
-        akVector4 row = m.getCol(i);
-        memcpy(p, &row, 4 * sizeof(float));
-        p += 4*sizeof(float);
-    }
-}*/
-#endif
-
 void akDemoBase::render()
 {
 #ifndef OPENGL_ES_2_0
